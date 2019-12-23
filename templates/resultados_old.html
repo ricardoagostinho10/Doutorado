@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<title>Apresentação dos gráficos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/templates/graficos.css">
+<style>
+.mySlides1 {display:none;}
+
+.mySlides2 {display:none;}
+
+.mySlides3 {display:none;}
+
+.mySlides4 {display:none;}
+
+.mySlides5 {display:none;}
+
+#grupo1{display:none;}
+
+#grupo2{display:none;}
+
+#grupo3{display:none;}
+
+#grupo4{display:none;}
+
+#grupo5{display:none;}
+
+			body {
+			   background: url('static/img/tela_web_ghost.png') no-repeat center center fixed; 
+			   -webkit-background-size: 70%;
+			   -moz-background-size: 70%;
+			   -o-background-size: 70%;
+			   background-size: 70%;
+			   
+			}
+</style>
+<body>
+
+<h2 class="w3-center">Gráficos</h2>
+
+<table border="0">
+<tr>
+<td>
+<br><br><br><br>
+<a href="#" onclick="document.getElementById('grupo1').style.display='block';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';document.getElementById('grupo5').style.display='none';">AP – [Ca2+] Cy – FORCE – SL</a>
+
+<br>
+<br>
+<a href="#" onclick="document.getElementById('grupo2').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';document.getElementById('grupo5').style.display='none';">[Ca2+]Cleft – [Ca2+]SS – [Ca2+]Cy – [Ca2+]SR</a>
+
+<br>
+<br>
+<a href="#" onclick="document.getElementById('grupo3').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo4').style.display='none';document.getElementById('grupo5').style.display='none';">iCaL – iNa – iNaCa – iNaK</a>
+
+<br>
+<br>
+<a href="#" onclick="document.getElementById('grupo4').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo5').style.display='none';">iKtof – iK1 – iKs – iKr – iKur – iKss</a>
+<br>
+<br>
+<a href="#" onclick="document.getElementById('grupo5').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';">CICR – Leak SR – SR ATPase – SL ATPase</a>
+<br>
+</td>
+<td>
+<div id="grupo1">
+	<div class="w3-content w3-display-container">
+		{% for id in ids %}			
+			{% if id == "graph-0" or id == "graph-1" or id == "graph-2" or id =="graph-3" %}
+				<div class="mySlides1" id="{{id}}"></div>			
+			{% endif %}
+
+		{% endfor %}		
+
+	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs1(-1)">Anterior</button>
+	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs1(1)">Próximo</button>
+	</div>
+</div>
+
+<div id="grupo2">
+	<div class="w3-content w3-display-container">
+		{% for id in ids %}			
+			{% if id == "graph-4" or id == "graph-5" or id == "graph-6" or id =="graph-7" %}
+				<div class="mySlides2" id="{{id}}"></div>			
+			{% endif %}
+
+		{% endfor %}		
+
+	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs2(-1)">Anterior</button>
+	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs2(1)">Próximo</button>
+	</div>
+</div>
+
+<div id="grupo3">
+	<div class="w3-content w3-display-container">
+		{% for id in ids %}			
+
+			{% if id == "graph-8" or id == "graph-9" or id == "graph-10" or id =="graph-11" %}
+				<div class="mySlides3" id="{{id}}"></div>
+			{% endif %}
+
+		{% endfor %}		
+
+	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs3(-1)">Anterior</button>
+	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs3(1)">Próximo</button>
+	</div>
+</div>
+
+<div id="grupo4">
+	<div class="w3-content w3-display-container">
+		{% for id in ids %}			
+
+			{% if id == "graph-12" or id == "graph-13" or id == "graph-14" or id =="graph-15" or id =="graph-16"%}
+				<div class="mySlides4" id="{{id}}"></div>
+			{% endif %}		
+			
+
+		{% endfor %}		
+
+	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs4(-1)">Anterior</button>
+	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs4(1)">Próximo</button>
+	</div>
+</div>
+
+<div id="grupo5">
+	<div class="w3-content w3-display-container">
+		{% for id in ids %}			
+			{% if id == "graph-17" or id == "graph-18" or id == "graph-19" or id =="graph-20" %}
+				<div class="mySlides5" id="{{id}}"></div>
+			{% endif %}				
+		{% endfor %}		
+
+	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs5(-1)">Anterior</button>
+	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs5(1)">Próximo</button>
+	</div>
+</div>
+</td>
+
+</tr>
+</table>
+<script>
+var slideIndex1 = 1;
+showDivs1(slideIndex1);
+
+function plusDivs1(n) {
+  showDivs1(slideIndex1 += n);
+}
+
+function showDivs1(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides1");
+  if (n > x.length) {slideIndex1 = 1}
+  if (n < 1) {slideIndex1 = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex1-1].style.display = "block";  
+}
+
+var slideIndex2 = 1;
+showDivs2(slideIndex2);
+
+function plusDivs2(n) {
+  showDivs2(slideIndex2 += n);
+}
+
+function showDivs2(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides2");
+  if (n > x.length) {slideIndex2 = 1}
+  if (n < 1) {slideIndex2 = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex2-1].style.display = "block";  
+}
+
+var slideIndex3 = 1;
+showDivs3(slideIndex3);
+
+function plusDivs3(n) {
+  showDivs3(slideIndex3 += n);
+}
+
+function showDivs3(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides3");
+  if (n > x.length) {slideIndex3 = 1}
+  if (n < 1) {slideIndex3 = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex3-1].style.display = "block";  
+}
+
+var slideIndex4 = 1;
+showDivs4(slideIndex4);
+
+function plusDivs4(n) {
+  showDivs4(slideIndex4 += n);
+}
+
+function showDivs4(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides4");
+  if (n > x.length) {slideIndex4 = 1}
+  if (n < 1) {slideIndex4 = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex4-1].style.display = "block";  
+}
+
+var slideIndex5 = 1;
+showDivs5(slideIndex5);
+
+function plusDivs5(n) {
+  showDivs5(slideIndex5 += n);
+}
+
+function showDivs5(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides5");
+  if (n > x.length) {slideIndex5 = 1}
+  if (n < 1) {slideIndex5 = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex5-1].style.display = "block";  
+}
+
+
+</script>
+
+</body>
+
+<footer>
+
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	
+    <script type="text/javascript">
+        var graphs = {{graphJSON | safe}};
+        var ids = {{ids | safe}};
+        for(var i in graphs) {
+
+			Plotly.newPlot(ids[i], 
+					graphs[i].data, 
+					graphs[i].layout,
+					{showSendToCloud: false});
+        }
+    </script>
+</footer>
+
+</html>
+
+

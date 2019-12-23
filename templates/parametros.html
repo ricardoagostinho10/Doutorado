@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/graficos.css') }}">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
@@ -15,29 +14,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			#protocolo{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
 			#simulacao{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
 
-.mySlides1 {display:none;}
-
-.mySlides2 {display:none;}
-
-.mySlides3 {display:none;}
-
-.mySlides4 {display:none;}
-
-.mySlides5 {display:none;}
-
-#grupo1{display:none;}
-
-#grupo2{display:none;}
-
-#grupo3{display:none;}
-
-#grupo4{display:none;}
-
-#grupo5{display:none;}
-
 </style>
 <body class="w3-light-grey">
-
+<form action="/graficos" method="post">
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
@@ -52,6 +31,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
     <div class="w3-col s8 w3-bar">
       <span><strong>Sistema Cardio Junction</strong></span><br>
+	  <!--
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+	  -->
     </div>
   </div>
   <hr>
@@ -61,9 +45,21 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
 	<a href="{{ url_for('principal') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Home</a>   
-	<a href="{{ url_for('parametros') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i> Parâmetros</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sobre</a><br> 
+	<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i> Parâmetros</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sobre</a><br>
   
+  <!--
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+	-->
   </div>
 </nav>
 
@@ -80,7 +76,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-  <a href="#" onclick="document.getElementById('grupo1').style.display='block';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';document.getElementById('grupo5').style.display='none';">
     <div class="w3-quarter">
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
@@ -88,13 +83,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>1</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>AP – [Ca2+] Cy – FORCE – SL</h4>
+        <h4>Cleft</h4>
       </div>
     </div>
-	
-	</a>
-	
-<a href="#" onclick="document.getElementById('grupo2').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';document.getElementById('grupo5').style.display='none';">
     <div class="w3-quarter">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
@@ -102,11 +93,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>2</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>[Ca2+]Cleft – [Ca2+]SS – [Ca2+]Cy – [Ca2+]SR</h4>
+        <h4>Subsarcolema</h4>
       </div>
     </div>
-	</a>	
-<a href="#" onclick="document.getElementById('grupo3').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo4').style.display='none';document.getElementById('grupo5').style.display='none';">	
     <div class="w3-quarter">
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
@@ -114,115 +103,56 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>3</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>iCaL – iNa – iNaCa – iNaK</h4>
+        <h4>Cytosol</h4>
       </div>
     </div>
-</a>	
-
-<a href="#" onclick="document.getElementById('grupo5').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';">
-    <div class="w3-quarter">
-      <div class="w3-container w3-yellow w3-padding-16">
-        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>4</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>CICR – Leak SR – SR ATPase – SL ATPase</h4>
-      </div>
-    </div>
-</a>
-
-<a href="#" onclick="document.getElementById('grupo4').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo5').style.display='none';">
     <div class="w3-quarter">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>5</h3>
+          <h3>4</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>iKtof – iK1 – iKs – iKr – iKur – iKss</h4>
+        <h4>Retículo Sarcoplasmatico</h4>
       </div>
     </div>
-  
-</a>
-</div>
+  </div>
+
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third">
-<div id="grupo1">
-	<div class="w3-content w3-display-container">
-		{% for id in ids %}			
-			{% if id == "graph-0" or id == "graph-1" or id == "graph-2" or id =="graph-3" %}
-				<div class="mySlides1" id="{{id}}"></div>			
-			{% endif %}
-
-		{% endfor %}		
-
-	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs1(-1)">Anterior</button>
-	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs1(1)">Próximo</button>
-	</div>
-</div>
-
-<div id="grupo2">
-	<div class="w3-content w3-display-container">
-		{% for id in ids %}			
-			{% if id == "graph-4" or id == "graph-5" or id == "graph-6" or id =="graph-7" %}
-				<div class="mySlides2" id="{{id}}"></div>			
-			{% endif %}
-
-		{% endfor %}		
-
-	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs2(-1)">Anterior</button>
-	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs2(1)">Próximo</button>
-	</div>
-</div>
-
-<div id="grupo3">
-	<div class="w3-content w3-display-container">
-		{% for id in ids %}			
-
-			{% if id == "graph-8" or id == "graph-9" or id == "graph-10" or id =="graph-11" %}
-				<div class="mySlides3" id="{{id}}"></div>
-			{% endif %}
-
-		{% endfor %}		
-
-	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs3(-1)">Anterior</button>
-	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs3(1)">Próximo</button>
-	</div>
-</div>
-
-<div id="grupo4">
-	<div class="w3-content w3-display-container">
-		{% for id in ids %}			
-
-			{% if id == "graph-12" or id == "graph-13" or id == "graph-14" or id =="graph-15" or id =="graph-16"%}
-				<div class="mySlides4" id="{{id}}"></div>
-			{% endif %}		
-			
-
-		{% endfor %}		
-
-	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs4(-1)">Anterior</button>
-	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs4(1)">Próximo</button>
-	</div>
-</div>
-
-<div id="grupo5">
-	<div class="w3-content w3-display-container">
-		{% for id in ids %}			
-			{% if id == "graph-17" or id == "graph-18" or id == "graph-19" or id =="graph-20" %}
-				<div class="mySlides5" id="{{id}}"></div>
-			{% endif %}				
-		{% endfor %}		
-
-	  <button class="w3-button w3-black w3-display-left" onclick="plusDivs5(-1)">Anterior</button>
-	  <button class="w3-button w3-black w3-display-right" onclick="plusDivs5(1)">Próximo</button>
-	</div>
-</div>
-
+        <h5>Modelo</h5>
+        <img src="../static/img/TELA_WEB.PNG" style="width:100%" alt="Quatro compartimentos">
+      </div>
+      <div class="w3-twothird">
+        <h5>Parâmetros</h5>
+        <table class="w3-table w3-striped w3-white">
+          <tr>
+            <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+            <td>Deseja alterar a modelagem dos canais iônicos?</td>
+            <td><i><button type="button" onclick="document.getElementById('pop').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacao').style.display='none';">Clique Aqui!</button></i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+            <td>Deseja realizar a aplicação de fármacos?</td>
+            <td><i><button type="button" onclick="document.getElementById('farmaco').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('pop').style.display='none';document.getElementById('simulacao').style.display='none';">Clique Aqui!</button></i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+            <td>  Qual o protocolo de simulação?</td>
+            <td><i><button type="button" onclick="document.getElementById('protocolo').style.display='block';document.getElementById('pop').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacao').style.display='none';">Clique Aqui!</button></i></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+            <td>Parâmetros da Simulação</td>
+            <td><i><button type="button" onclick="document.getElementById('simulacao').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('pop').style.display='none';">Clique Aqui!</button></i></td>
+          </tr>
+          <tr>            
+            <td colspan="3"><i><button type='submit'  id='recalcular' style="display: block; width: 20%;">Executar</button></i></td>
+          </tr>		  
+        </table>
+      </div>
     </div>
-  </div>
   </div>
   <hr>
   
@@ -516,114 +446,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- End page content -->
 </div>
 
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	
-    <script type="text/javascript">
-        var graphs = {{graphJSON | safe}};
-        var ids = {{ids | safe}};
-        for(var i in graphs) {
-
-			Plotly.newPlot(ids[i], 
-					graphs[i].data, 
-					graphs[i].layout,
-					{showSendToCloud: false});
-        }
-    </script>
-
-<script>
-var slideIndex1 = 1;
-showDivs1(slideIndex1);
-
-function plusDivs1(n) {
-  showDivs1(slideIndex1 += n);
-}
-
-function showDivs1(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides1");
-  if (n > x.length) {slideIndex1 = 1}
-  if (n < 1) {slideIndex1 = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex1-1].style.display = "block";  
-}
-
-var slideIndex2 = 1;
-showDivs2(slideIndex2);
-
-function plusDivs2(n) {
-  showDivs2(slideIndex2 += n);
-}
-
-function showDivs2(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides2");
-  if (n > x.length) {slideIndex2 = 1}
-  if (n < 1) {slideIndex2 = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex2-1].style.display = "block";  
-}
-
-var slideIndex3 = 1;
-showDivs3(slideIndex3);
-
-function plusDivs3(n) {
-  showDivs3(slideIndex3 += n);
-}
-
-function showDivs3(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides3");
-  if (n > x.length) {slideIndex3 = 1}
-  if (n < 1) {slideIndex3 = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex3-1].style.display = "block";  
-}
-
-var slideIndex4 = 1;
-showDivs4(slideIndex4);
-
-function plusDivs4(n) {
-  showDivs4(slideIndex4 += n);
-}
-
-function showDivs4(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides4");
-  if (n > x.length) {slideIndex4 = 1}
-  if (n < 1) {slideIndex4 = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex4-1].style.display = "block";  
-}
-
-var slideIndex5 = 1;
-showDivs5(slideIndex5);
-
-function plusDivs5(n) {
-  showDivs5(slideIndex5 += n);
-}
-
-function showDivs5(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides5");
-  if (n > x.length) {slideIndex5 = 1}
-  if (n < 1) {slideIndex5 = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex5-1].style.display = "block";  
-}
-
-
-</script>
-
 <script>
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");
@@ -648,6 +470,6 @@ function w3_close() {
   overlayBg.style.display = "none";
 }
 </script>
-
+</form>
 </body>
 </html>

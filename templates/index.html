@@ -1,0 +1,347 @@
+﻿	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="descreva o sistema aqui">
+		  <meta name="author" content="voces">
+
+		  <title> :..Cardio Junction..: </title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link href="{{ url_for('static', filename='css/sticky-footer-navbar.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">		
+		<style>
+			#pop{display:none;position:absolute;top:50%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0}
+			#farmaco{display:none;position:absolute;top:50%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0}
+			#protocolo{display:none;position:absolute;top:50%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0}
+			#simulacao{display:none;position:absolute;top:50%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0}
+		
+			body {
+			   background: url('static/img/tela_web_ghost.png') no-repeat center center fixed; 
+			   -webkit-background-size: 70%;
+			   -moz-background-size: 70%;
+			   -o-background-size: 70%;
+			   background-size: 70%;
+			   
+			}
+			
+			
+</style>
+	</head>
+	<body>
+	<form action="/teste">
+
+<div id="pop">
+<a href="#" onclick="document.getElementById('pop').style.display='none';">[Fechar]</a>
+			<table border="0">			
+				<tr>
+					<td>
+						Canal de cálcio de longa duração (ICaL) 0 - HH ou 1 - Mahajan (2008)
+					</td>
+					<td>
+						<select name="selCalcio">
+							<option value="0">0</option>
+							<option value="1" selected>1</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Canal de sódio de ativação rápida (INa) 0 - HH ou 1 - Winslow (2004)nnnn
+					</td>
+					<td>
+						<select name="selSodio">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Canal de potássio transitório (Ito) 0 - HH ou 1 - Winslow (2008)
+					</td>
+					<td>
+						<select name="selPotassioTrans">
+							<option value="0">0</option>
+							<option value="1" selected>1</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Canal de potássio (IKr) 0 - HH ou 1 - Winslow (2008)
+					</td>
+					<td>
+						<select name="selPotassioR">
+							<option value="0">0</option>
+							<option value="1" selected>1</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Canal de potássio (IKs) 0 - HH ou 1 - Winslow (2004) ou 2 - Rudy (2008)
+					</td>
+					<td>
+						<select name="selPotassioS">
+							<option value="0">0</option>
+							<option value="1" selected>1</option>
+							<option value="2">2</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Canal de força: 1 - Rice et al ou 0 - Negroni & Lascano
+					</td>
+					<td>
+						<select name="selForca">
+							<option value="0">0</option>
+							<option value="1" selected>1</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Comprimento da célula em um
+					</td>
+					<td>
+						<input name="txtComCel" value="100" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Comprimento do Sarcômero em um
+					</td>
+					<td>
+						<input name="txtComSar" value="1.05" />
+					</td>
+				</tr>
+			
+			</table>
+ 
+</div>
+
+<div id="farmaco">
+<a href="#" onclick="document.getElementById('farmaco').style.display='none';">[Fechar]</a> 
+	<table border="0">
+				<tr>
+					<td>
+						Aplicar Fármacos:
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO SR PUMP (%)</td>
+					<td>
+						<input name="txtBloqueioPump" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>ESTIMULAÇÃO DO SR PUMP (%)</td>
+					<td>
+						<input name="txtEstimuloPump" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO NCX (%)</td>
+					<td>
+						<input name="txtBloqueioNCX" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>ESTIMULAÇÃO DO NCX (%)</td>
+					<td>
+						<input name="txtEstimuloNCX" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>CAFEÍNA</td>
+					<td>
+						<select name="selCafeina">
+							<option value="0" selected>Não</option>
+							<option value="100">Sim</option>                        
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO CICR (%)</td>
+					<td>
+						<input name="txtBloqueioCICR" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO IKs (%)</td>
+					<td>
+						<input name="txtBloqueioIKs" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO IKr (%)</td>
+					<td>
+						<input name="txtBloqueioIKr" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO IKtof (%)</td>
+					<td>
+						<input name="txtBloqueioIKtof" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO IKtos (%)</td>
+					<td>
+						<input name="txtBloqueioIKtos" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO INa Fast (%)</td>
+					<td>
+						<input name="txtBloqueioINaFast" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>BLOQUEIO DO ICaL (%)</td>
+					<td>
+						<input name="txtBloqueioICaL" value="0" />
+					</td>
+				</tr>
+	
+	</table>
+</div>
+
+<div id="protocolo">
+<a href="#" onclick="document.getElementById('protocolo').style.display='none';">[Fechar]</a> 
+<table border="0">
+	
+				<tr>
+					<td>
+						Escolha o Protocolo para Simulação
+					</td>
+					<td>
+						<select name="selProtocolo">
+							<option value="1" selected>Potencial de ação artificial</option>
+							
+							<option value="3">Injeção de corrente</option>
+						</select>
+					</td>
+				</tr>
+		
+		
+</table>
+</div>
+
+<div id="simulacao" class="container">
+<a href="#" onclick="document.getElementById('simulacao').style.display='none';">[Fechar]</a>
+<table border="0">
+				<tr>
+					<td>ESTIMULADOR DO ICaL (%)</td>
+					<td>
+						<input name="txtEstimuladorICaL" value="0" />
+					</td>
+				</tr>            
+				<tr>
+					<td>INSTANTE PARA APLICAÇÃO DO PULSO EM ms</td>
+					<td>
+						<input name="txtInstanteAplicacaoPulso" value="1000" />
+					</td>
+				</tr>
+				<tr>
+					<td>TEMPO DE SIMULAÇÃO EM ms</td>
+					<td>
+						<input name="txtTempoSimulacao" value="5000" />
+					</td>
+				</tr>
+				<tr>
+					<td>VOLTAGEM DE ESTIMULAÇÃO EM mV</td>
+					<td>
+						<input name="txtEstimuloVoltagem" value="15" />
+					</td>
+				</tr>
+				<tr>
+					<td>POTENCIAL DE REPOUSO EM mV</td>
+					<td>
+						<input name="txtPotencialRepouso" value="-80" />
+					</td>
+				</tr>
+				<tr>
+					<td>TEMPO DE SIMULAÇÃO APÓS APLICAÇÃO DO PULSO EM ms</td>
+					<td>
+						<input name="txtTempoSimulacaoAplicacao" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>LARGURA DO PULSO EM ms</td>
+					<td>
+						<input name="txtLarguraPulso" value="200" />
+					</td>
+				</tr>
+				<tr>
+					<td>FREQUÊNCIA EM Hz</td>
+					<td>
+						<input name="txtFrequencia" value="1" />
+					</td>
+				</tr>
+				<tr>
+					<td>AMPLITUDE DA CORRENTE INJETADA EM uA/uF</td>
+					<td>
+						<input name="txtAmplitudeInjetada" value="9.5" />
+					</td>
+				</tr>
+				<tr>
+					<td>INSTANTE PARA PLOTAGEM EM ms</td>
+					<td>
+						<input name="txtInstantePlotagem" value="0" />
+					</td>
+				</tr>
+
+			</table>
+			<br>
+
+
+	</div>
+
+
+<br><br><br><br>
+&nbsp; Deseja alterar a modelagem dos canais iônicos?
+<br>
+&nbsp; <button type="button" onclick="document.getElementById('pop').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacao').style.display='none';">Sim</button>
+<br>
+<br>
+&nbsp; Deseja realizar a aplicação de fármacos?
+<br>
+&nbsp; <button type="button" onclick="document.getElementById('farmaco').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('pop').style.display='none';document.getElementById('simulacao').style.display='none';">Sim</button>
+
+
+<br>
+<br>
+&nbsp; Qual o protocolo de simulação?
+<br>
+&nbsp; <button type="button" onclick="document.getElementById('protocolo').style.display='block';document.getElementById('pop').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacao').style.display='none';">Sim</button>
+<br>
+<br>
+&nbsp; Parâmetros da Simulação
+<br>
+&nbsp; <button type="button" onclick="document.getElementById('simulacao').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('pop').style.display='none';">Sim</button>
+<br>
+<br>
+<br>
+
+<button type="submit"  id='recalcular' class="btn btn-primary btn-lg envia" style="display: block; width: 10%;">
+		<span class="glyphicon glyphicon-console" ></span> Executar
+</button>
+					
+	
+	
+	<!--<footer class="footer">
+		<div class="container">
+			<p class="text-muted"> Gráficos Python </p>
+		</div>
+	</footer>-->
+
+	</form>
+	</body>
+
+	</html>

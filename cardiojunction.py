@@ -7,13 +7,13 @@ import warnings
 warnings.filterwarnings('ignore')
 #from matplotlib.figure import Figure
 #import plotly.plotly as py
-import plotly.graph_objs as go
-from plotly.offline import download_plotlyjs, plot,iplot
-from plotly import tools
+#import plotly.graph_objs as go
+#from plotly.offline import download_plotlyjs, plot,iplot
+#from plotly import tools
 import os
 import pandas as pd
 import json
-import plotly
+#import plotly
 
 
 class cardiojunction:

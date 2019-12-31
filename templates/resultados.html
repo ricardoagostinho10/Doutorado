@@ -76,7 +76,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Compartimentos</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Opções de visualização</b></h5>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
@@ -88,7 +88,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>1</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>AP – [Ca2+] Cy – FORCE – SL</h4>
+        <h4>AP – [Ca<sup>2+</sup>] Cy – FORCE – SL</h4>
       </div>
     </div>
 	
@@ -102,7 +102,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>2</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>[Ca2+]Cleft – [Ca2+]SS – [Ca2+]Cy – [Ca2+]SR</h4>
+        <h4>[Ca<sup>2+</sup>]Cleft – [Ca<sup>2+</sup>]SS – [Ca<sup>2+</sup>]Cy – [Ca<sup>2+</sup>]SR</h4>
       </div>
     </div>
 	</a>	
@@ -119,7 +119,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
 </a>	
 
-<a href="#" onclick="document.getElementById('grupo5').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';">
+<a href="#" onclick="document.getElementById('grupo4').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo5').style.display='none';">
     <div class="w3-quarter">
       <div class="w3-container w3-yellow w3-padding-16">
         <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
@@ -132,7 +132,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
 </a>
 
-<a href="#" onclick="document.getElementById('grupo4').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo5').style.display='none';">
+<a href="#" onclick="document.getElementById('grupo5').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo2').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';">
     <div class="w3-quarter">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
@@ -140,7 +140,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>5</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>iKtof – iK1 – iKs – iKr – iKur – iKss</h4>
+        <h4>iKtof – iKi – iKs – iKr – iKur – iKss</h4>
       </div>
     </div>
   
@@ -196,7 +196,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	<div class="w3-content w3-display-container">
 		{% for id in ids %}			
 
-			{% if id == "graph-12" or id == "graph-13" or id == "graph-14" or id =="graph-15" or id =="graph-16"%}
+			{% if id == "graph-12" or id == "graph-13" or id == "graph-14" or id == "graph-15" %}
 				<div class="mySlides4" id="{{id}}"></div>
 			{% endif %}		
 			
@@ -211,7 +211,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div id="grupo5">
 	<div class="w3-content w3-display-container">
 		{% for id in ids %}			
-			{% if id == "graph-17" or id == "graph-18" or id == "graph-19" or id =="graph-20" %}
+			{% if  id == "graph-16" or id == "graph-17" or id == "graph-18" or id == "graph-19" or id == "graph-20" or id == "graph-21" %}
 				<div class="mySlides5" id="{{id}}"></div>
 			{% endif %}				
 		{% endfor %}		

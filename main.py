@@ -90,26 +90,28 @@ def get_plot():
     #UM = UM.transpose();
 
     graphs = [
-         dict(data=[dict(x=t,y=I_app,type='scatter')],layout=dict(title='Corrente Injetada',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=Fcontr,type='scatter',)],layout=dict(title='Força de Contração',yaxis=dict(title= 'Force in mN/mm2',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=SL,type='scatter',)],layout=dict(title='Sarcomere length in um',yaxis=dict(title= 'Probability',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
-         dict(data=[dict(x=t,y=z36,type='scatter'),],layout=dict(title='CA cyt',yaxis=dict(title= '[CA2+]cyt in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=SL,type='scatter',)],layout=dict(title='Sarcomere length in um',yaxis=dict(title= 'Probability',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),						
-         dict(data=[dict(x=t,y=z37,type='scatter')],layout=dict(title='CA cleft',yaxis=dict(title= '[CA2+]cleft in mM',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),			
-         dict(data=[dict(x=t,y=z35,type='scatter'),],layout=dict(title='CA ss',yaxis=dict(title= '[CA2+]ss in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
-	     dict(data=[dict(x=t,y=z30,type='scatter'),],layout=dict(title='CA SR',yaxis=dict(title= '[CA2+]SR in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
+         dict(data=[dict(x=t,y=v,type='scatter')],layout=dict(title='Voltagem',yaxis=dict(title= 'm/V',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),
+         dict(data=[dict(x=t,y=z36,type='scatter'),],layout=dict(title='Ca<sup>2+</sup>CYT',yaxis=dict(title= '[Ca<sup>2+</sup>]cyt in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
+         dict(data=[dict(x=t,y=Fcontr,type='scatter',)],layout=dict(title='Força de Contração',yaxis=dict(title= 'Force in mN/mm<sup>2</sup>',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
+         dict(data=[dict(x=t,y=SL,type='scatter',)],layout=dict(title='SL',yaxis=dict(title= 'Sarcomere length in um',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
+         dict(data=[dict(x=t,y=z35,type='scatter')],layout=dict(title='Ca<sup>2+</sup>Cleft',yaxis=dict(title= '[Ca<sup>2+</sup>]cleft in mM',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),			
+         dict(data=[dict(x=t,y=z36,type='scatter'),],layout=dict(title='Ca<sup>2+</sup>SS',yaxis=dict(title= '[Ca<sup>2+</sup>]ss in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
+         dict(data=[dict(x=t,y=z37,type='scatter'),],layout=dict(title='Ca<sup>2+</sup>CY',yaxis=dict(title= '[Ca<sup>2+</sup>]cyt in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),		 
+	     dict(data=[dict(x=t,y=z30,type='scatter'),],layout=dict(title='Ca<sup>2+</sup>SR',yaxis=dict(title= '[Ca<sup>2+</sup>]SR in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
          dict(data=[dict(x=t,y=I_Ca,type='scatter'),],layout=dict(title='ICal Current',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
-         dict(data=[dict(x=t,y=I_Na,type='scatter'),],layout=dict(title='Fast Na Current',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
-         dict(data=[dict(x=t,y=I_ncx,type='scatter')],layout=dict(title='NCX',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
+         dict(data=[dict(x=t,y=I_Na,type='scatter'),],layout=dict(title='INa Current',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
+         dict(data=[dict(x=t,y=I_ncx,type='scatter')],layout=dict(title='INaCa',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=I_nak,type='scatter')],layout=dict(title='NaK',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
-		 dict(data=[dict(x=t,y=I_kr,type='scatter',name='Ikr'),dict(x=t,y=I_ks,type='scatter',name='Iks')],layout=dict(title='Currents IKr and IKs',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=C0KsC1Ks,type='scatter',name='CLOSED'),dict(x=t,y=O1KsO2Ks,type='scatter',name='OPEN')],layout=dict(title='States Channel IKs',yaxis=dict(title= 'Probability',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=C1KrC2KrC3Kr,type='scatter',name='CLOSED'),dict(x=t,y=I_kr,type='scatter',name='INACTIVED'),dict(x=t,y=OKr,type='scatter',name='OPEN')],layout=dict(title='[CA]ss',yaxis=dict(title= 'States channel IKr',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=I_kp,type='scatter'),],layout=dict(title='IKp Current',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=I_ki,type='scatter'),],layout=dict(title='IKi Current',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=J_SRCarel,type='scatter')],layout=dict(title='CICR',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=J_SRleak,type='scatter')],layout=dict(title='Leak SR',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),            
-         dict(data=[dict(x=t,y=J_serca,type='scatter')],layout=dict(title='Serca Pump SR',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)')))		
+         dict(data=[dict(x=t,y=J_serca,type='scatter')],layout=dict(title='Serca Pump SR',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
+         dict(data=[dict(x=t,y=I_pca_sl,type='scatter')],layout=dict(title='Serca Pump SL',yaxis=dict(title= 'mM/ms',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),		 
+         dict(data=[dict(x=t,y=I_tof,type='scatter')],layout=dict(title='IKtof',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),		 
+         dict(data=[dict(x=t,y=I_ki,type='scatter'),],layout=dict(title='IK<sub>i</sub> Current',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),		 
+         dict(data=[dict(x=t,y=I_ks,type='scatter')],layout=dict(title='Iks',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),		 		 
+         dict(data=[dict(x=t,y=I_kr,type='scatter')],layout=dict(title='Ikr',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),		 		 		 
+         dict(data=[dict(x=t,y=IKur,type='scatter')],layout=dict(title='IKur',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),		 		 		          
+         dict(data=[dict(x=t,y=IKss,type='scatter')],layout=dict(title='IKss',yaxis=dict(title= 'uA/uF',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)')))		 		 		          		 
          ]
  
 
@@ -140,4 +142,5 @@ def resultados():
     return render_template('resultados.html')
 	
 if __name__ == "__main__":
+    #app.run(debug=False)
     app.run(debug=False, host='0.0.0.0')

@@ -71,9 +71,9 @@ def get_plot():
         
     tig = int(request.form['txtInstantePlotagem']);
 	
-    arquivoNome = str(protocol) + str(Model_ICaL) + str(Model_Na) + str(Model_Ito) + str(Model_IKr) + str(Model_IKs) + str(Model_Force) + str(cellLength) + str(Lsarc) + str(BLOCKSRPUMP) + str(STIMULUSRPUMP) + str(BLOCKNCX) + str(STIMULUSNCX) + str(CAFEINA) + str(BLOCKCICR) + str(BLOCKIKs) + str(BLOCKIKr) + str(BLOCKItof) + str(BLOCKItos) + str(BLOCKINa) + str(BLOCKICaL) + str(STIMULUSICaL) + str(t_ap) + str(L) + str(Ap) + str(v_resting) + str(tap) + str(w) + str(f) + str(Delay) + str(A_inj) + str(tig);
+    #arquivoNome = str(protocol) + str(Model_ICaL) + str(Model_Na) + str(Model_Ito) + str(Model_IKr) + str(Model_IKs) + str(Model_Force) + str(cellLength) + str(Lsarc) + str(BLOCKSRPUMP) + str(STIMULUSRPUMP) + str(BLOCKNCX) + str(STIMULUSNCX) + str(CAFEINA) + str(BLOCKCICR) + str(BLOCKIKs) + str(BLOCKIKr) + str(BLOCKItof) + str(BLOCKItos) + str(BLOCKINa) + str(BLOCKICaL) + str(STIMULUSICaL) + str(t_ap) + str(L) + str(Ap) + str(v_resting) + str(tap) + str(w) + str(f) + str(Delay) + str(A_inj) + str(tig);
 		
-    
+    #print(str(protocol));
 
     
     c = cardiojunction();

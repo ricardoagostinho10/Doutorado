@@ -1,19 +1,12 @@
 import numpy as np
 import scipy.integrate as inte
-#import matplotlib.pyplot as plt
 import math
 from math import exp
 import warnings
 warnings.filterwarnings('ignore')
-#from matplotlib.figure import Figure
-#import plotly.plotly as py
-#import plotly.graph_objs as go
-#from plotly.offline import download_plotlyjs, plot,iplot
-#from plotly import tools
 import os
 import pandas as pd
 import json
-#import plotly
 
 
 class cardiojunction:
@@ -228,10 +221,16 @@ class cardiojunction:
     
         elif self.protocol==3:
             v = y[38];    #Injecao de corrente    
-            
-            if ((t > self.t_ap) and (t < self.t_ap + self.D) and (np.mod(t + (1000 - self.t_ap),(self.w + self.Delay)))<= self.w):   ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 40 Hz durante 1s
-                    
-                I_app = self.A_inj;    
+            #print(self.t_ap)            
+            #print(self.D)			
+            #print(self.w)			
+            #print(self.Delay)
+            #print(t)			
+            #print(np.remainder(t + (1000 - self.t_ap),(self.w + self.Delay)))
+            if ((t > self.t_ap) and (t < self.t_ap + self.D)) and (np.remainder(t + (1000 - self.t_ap),(self.w + self.Delay)))<= (self.w+100 or self.w-100):   
+            #if ((t > self.t_ap) and (t < self.t_ap + self.D)) and ((t + (1000 - self.t_ap)%(self.w + self.Delay)))<= self.w:                    
+                I_app = self.A_inj;
+                				
         
             elif (t > self.t_ap + self.D) and (np.mod(t + (1000 - self.t_ap),(self.w2 + self.Delay2))<= self.w2):       ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 4 Hz durante 1s
                     
@@ -1719,12 +1718,12 @@ class cardiojunction:
                 I_app[i] = (V_clamp[i]- y39[i]/R_clamp);          
      
             elif(self.protocol==3):
-                
-                if (t[i] > self.t_ap) and (t[i] < self.t_ap + self.D) and (np.mod(t[i] + (1000 - self.t_ap),(self.w + self.Delay)))<= self.w:   ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 40 Hz durante 1s
-                    
+                if (t[i] > self.t_ap) and (t[i] < self.t_ap + self.D) and (np.remainder(t[i] + (1000 - self.t_ap),(self.w + self.Delay)))<= (self.w+100 or self.w-100):
+                ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 40 Hz durante 1s
+                #if (t[i] > self.t_ap) and (t[i] < self.t_ap + self.D) and ((t[i] + (1000 - self.t_ap) % (self.w + self.Delay)))<= self.w:                    
                     I_app[i] = self.A_inj;    
         
-                elif (t[i] > self.t_ap + self.D) and (((t[i] + (1000 - self.t_ap))%(self.w2 + self.Delay2)))<= self.w2:        ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 4 Hz durante 1s
+                elif (t[i] > self.t_ap + self.D) and ((np.mod(t[i] + (1000 - self.t_ap)),(self.w2 + self.Delay2)))<= self.w2:        ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 4 Hz durante 1s
                     
                     I_app[i] = self.A_inj2;
                     

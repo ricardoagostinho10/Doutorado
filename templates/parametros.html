@@ -256,6 +256,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					</td>
 				</tr>
 				<tr>
+					<td>ESTIMULADOR DO ICaL (%)</td>
+					<td>
+						<input name="txtEstimuladorICaL" value="0" />
+					</td>
+				</tr>  				
+				<tr>
 					<td>BLOQUEIO DO SR PUMP (%)</td>
 					<td>
 						<input name="txtBloqueioPump" value="0" />
@@ -343,7 +349,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 						Escolha o Protocolo para Simulação
 					</td>
 					<td>
-						<select name="selProtocolo">
+						<select id="selProtocolo" name="selProtocolo" onChange="alterarParametro()">
 							<option value="1" selected>Potencial de ação artificial</option>
 							
 							<option value="3">Injeção de corrente</option>
@@ -358,12 +364,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div id="simulacao" class="container">
 <a href="#" onclick="document.getElementById('simulacao').style.display='none';">[Fechar]</a>
 <table border="0">
-				<tr>
-					<td>ESTIMULADOR DO ICaL (%)</td>
-					<td>
-						<input name="txtEstimuladorICaL" value="0" />
-					</td>
-				</tr>            
 				<tr>
 					<td>INSTANTE PARA APLICAÇÃO DO PULSO EM ms</td>
 					<td>
@@ -397,7 +397,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<tr>
 					<td>LARGURA DO PULSO EM ms</td>
 					<td>
-						<input name="txtLarguraPulso" value="200" />
+						<input name="txtLarguraPulso" id="txtLarguraPulso" value="200" />
 					</td>
 				</tr>
 				<tr>
@@ -462,6 +462,16 @@ function w3_open() {
     mySidebar.style.display = 'block';
     overlayBg.style.display = "block";
   }
+}
+
+function alterarParametro(){
+if (document.getElementById("selProtocolo").value=="3"){
+	document.getElementById("txtLarguraPulso").value = 5;	
+	}
+	else{
+	document.getElementById("txtLarguraPulso").value = 200;	
+	}
+
 }
 
 // Close the sidebar with the close button

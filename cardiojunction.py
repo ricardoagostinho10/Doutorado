@@ -1295,7 +1295,7 @@ class cardiojunction:
         self.v_resting = v_resting;
 
         self.tap = tap;
-
+		
         self.w = w;
 
         self.f = f;
@@ -1317,8 +1317,9 @@ class cardiojunction:
         
         self.A_inj2 = 9.5;                   # Amplitude da corrente injetada para o segundo trem de pulso
         
-        self.tsim = self.t_ap + self.L + self.tap          ##ok<NOPTS> # tempo total de simulacao em ms        
+        self.tsim = self.t_ap + self.L + self.tap          ##ok<NOPTS> # tempo total de simulacao em ms
         
+        self.vetorPulso(self.w,self.Delay,self.L)
     
 #tig = 2000;                         # instante a partir do qual deseja visualizar os graficos
 
@@ -1460,9 +1461,9 @@ class cardiojunction:
 
         backend = 'vode'
 
-        iteracoes = t_final * 50;
+        iteracoes = t_final * 5;
         tempo = np.linspace(t_start,t_final,iteracoes)
-        solver = inte.odeint (self.calculos, ynit, tempo, full_output=True)                    
+        solver = inte.odeint (self.calculos, ynit, tempo, full_output=True)                   
         
         z = np.array(solver[0]);
         t = np.array(tempo);

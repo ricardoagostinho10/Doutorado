@@ -1295,7 +1295,9 @@ class cardiojunction:
         self.v_resting = v_resting;
 
         self.tap = tap;
-		
+        if (w<30) and (protocol==1):		
+            w = 30;
+			
         self.w = w;
 
         self.f = f;
@@ -1459,12 +1461,12 @@ class cardiojunction:
         delta_t = 1e-5;
         ynit = Y0;
 
-        backend = 'vode'
+        backend = 'dopri5'
 
         iteracoes = t_final * 5;
-        tempo = np.linspace(t_start,t_final,200000)
+        tempo = np.linspace(t_start,t_final,iteracoes)
         solver = inte.odeint (self.calculos, ynit, tempo, full_output=True)                   
-        
+
         z = np.array(solver[0]);
         t = np.array(tempo);
         

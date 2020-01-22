@@ -221,12 +221,6 @@ class cardiojunction:
     
         elif self.protocol==3:
             v = y[38];    #Injecao de corrente    
-            #print(self.t_ap)            
-            #print(self.D)			
-            #print(self.w)			
-            #print(self.Delay)
-            #print(t)			
-            #print(np.remainder(t + (1000 - self.t_ap),(self.w + self.Delay)))
             if ((t > self.t_ap) and (t < self.t_ap + self.D)) and (np.remainder(t + (1000 - self.t_ap),(self.w + self.Delay)))<= (self.w+100 or self.w-100):   
             #if ((t > self.t_ap) and (t < self.t_ap + self.D)) and ((t + (1000 - self.t_ap)%(self.w + self.Delay)))<= self.w:                    
                 I_app = self.A_inj;
@@ -1323,9 +1317,8 @@ class cardiojunction:
         
         self.A_inj2 = 9.5;                   # Amplitude da corrente injetada para o segundo trem de pulso
         
-        self.tsim = self.t_ap + self.L + self.tap          ##ok<NOPTS> # tempo total de simulacao em ms
+        self.tsim = self.t_ap + self.L + self.tap          ##ok<NOPTS> # tempo total de simulacao em ms        
         
-        self.vetorPulso(self.w,self.Delay,self.L)
     
 #tig = 2000;                         # instante a partir do qual deseja visualizar os graficos
 
@@ -1467,7 +1460,7 @@ class cardiojunction:
 
         backend = 'vode'
 
-        iteracoes = t_final * 5;
+        iteracoes = t_final * 50;
         tempo = np.linspace(t_start,t_final,iteracoes)
         solver = inte.odeint (self.calculos, ynit, tempo, full_output=True)                    
         

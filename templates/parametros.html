@@ -145,7 +145,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <tr>
             <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
             <td>Deseja alterar os parâmetros de entrada?</td>
-            <td><i><button type="button" onclick="document.getElementById('simulacao').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('pop').style.display='none';">Clique Aqui!</button></i></td>
+            <td><i><button type="button" onclick="parametros();">Clique Aqui!</button></i></td>
           </tr>
           <tr>            
             <td colspan="3"><i><button type='submit'  id='recalcular' style="display: block; width: 20%;">Executar</button></i></td>
@@ -409,7 +409,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<tr>
 					<td>AMPLITUDE DA CORRENTE INJETADA EM uA/uF</td>
 					<td>
-						<input name="txtAmplitudeInjetada" value="9.5" />
+						<input name="txtAmplitudeInjetada" id="txtAmplitudeInjetada" value="9.5" />
 					</td>
 				</tr>
 				<tr>
@@ -464,9 +464,23 @@ function w3_open() {
   }
 }
 
+function parametros(){
+document.getElementById('simulacao').style.display='block';
+document.getElementById('protocolo').style.display='none';
+document.getElementById('farmaco').style.display='none';
+document.getElementById('pop').style.display='none';
+if (document.getElementById('selProtocolo').value=="3"){
+	document.getElementById('txtAmplitudeInjetada').removeAttribute('readonly');
+	}
+	else{	
+	document.getElementById('txtAmplitudeInjetada').setAttribute('readonly','readonly');
+	}
+
+}
+
 function alterarParametro(){
 if (document.getElementById("selProtocolo").value=="3"){
-	document.getElementById("txtLarguraPulso").value = 5;	
+	document.getElementById("txtLarguraPulso").value = 5;			
 	}
 	else{
 	document.getElementById("txtLarguraPulso").value = 200;	

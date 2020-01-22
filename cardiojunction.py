@@ -1462,7 +1462,7 @@ class cardiojunction:
         backend = 'vode'
 
         iteracoes = t_final * 5;
-        tempo = np.linspace(t_start,t_final,iteracoes)
+        tempo = np.linspace(t_start,t_final,200000)
         solver = inte.odeint (self.calculos, ynit, tempo, full_output=True)                   
         
         z = np.array(solver[0]);

@@ -135,8 +135,8 @@ class cardiojunction:
     step = 0
     acumuladorCorrente = []
 
-    def vetorPulso(self, largura, delay, L):
-        item = delay
+    def vetorPulso(self, largura, delay, L, t_ap):
+        item = t_ap
         cont = 0
         while item <= L:
             self.pulso.append(item)
@@ -1288,7 +1288,7 @@ class cardiojunction:
         
         self.L = L;
 
-        self.L = self.L- self.t_ap;
+        self.L = self.L - self.t_ap;
 
         self.Ap = Ap;
         
@@ -1321,7 +1321,11 @@ class cardiojunction:
         
         self.tsim = self.t_ap + self.L + self.tap          ##ok<NOPTS> # tempo total de simulacao em ms
         
-        self.vetorPulso(self.w,self.Delay,self.L)
+        #print(self.w);
+        #print(self.L);		
+        #print(self.Delay);		
+		
+        self.vetorPulso(self.w,self.Delay,L, self.t_ap)
     
 #tig = 2000;                         # instante a partir do qual deseja visualizar os graficos
 

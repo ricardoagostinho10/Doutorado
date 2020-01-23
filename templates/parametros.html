@@ -13,6 +13,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			#farmaco{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
 			#protocolo{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
 			#simulacao{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
+			#amplitude{display:block;}
 
 </style>
 <body class="w3-light-grey">
@@ -407,18 +408,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					</td>
 				</tr>
 				<tr>
-					<td>AMPLITUDE DA CORRENTE INJETADA EM uA/uF</td>
-					<td>
-						<input name="txtAmplitudeInjetada" id="txtAmplitudeInjetada" value="9.5" />
-					</td>
-				</tr>
-				<tr>
 					<td>INSTANTE PARA PLOTAGEM EM ms</td>
 					<td>
 						<input name="txtInstantePlotagem" value="0" />
 					</td>
 				</tr>
-
+				<tr id="amplitude">				
+					<td>AMPLITUDE DA CORRENTE INJETADA EM uA/uF</td>
+					<td>
+						<input name="txtAmplitudeInjetada" id="txtAmplitudeInjetada" value="9.5" />
+					</td>					
+				</tr>
 			</table>
 			<br>
 
@@ -469,11 +469,11 @@ document.getElementById('simulacao').style.display='block';
 document.getElementById('protocolo').style.display='none';
 document.getElementById('farmaco').style.display='none';
 document.getElementById('pop').style.display='none';
-if (document.getElementById('selProtocolo').value=="3"){
-	document.getElementById('txtAmplitudeInjetada').removeAttribute('readonly');
+if (document.getElementById('selProtocolo').value=="3"){	
+	document.getElementById('amplitude').style.display='none';
 	}
-	else{	
-	document.getElementById('txtAmplitudeInjetada').setAttribute('readonly','readonly');
+	else{		
+	document.getElementById('amplitude').style.display='block';
 	}
 
 }

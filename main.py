@@ -85,7 +85,10 @@ def get_plot():
     z0,z1,z2,I_tos,I_tof,Of,If,Os,Is,C0fC1fC2fC3f,CI0fCI1fCI2fCI3f,C0sC1sC2sC3s,CI0sCI1sCI2sCI3s,z7,
     z8,z9,z10,FORCA,Lsim,Cacy,CelL,Fcontr,N0,N1,P0,P1,P2,P3,SL,IKur,IKss]=c.principal(protocol, Model_ICaL, Model_Na, Model_Ito, Model_IKr, Model_IKs, Model_Force,cellLength, Lsarc, BLOCKSRPUMP,STIMULUSRPUMP,BLOCKNCX,STIMULUSNCX,CAFEINA,BLOCKCICR,BLOCKIKs,BLOCKIKr,BLOCKItof,BLOCKItos,BLOCKINa,BLOCKICaL,STIMULUSICaL,t_ap,L,Ap,v_resting,tap,w,f,Delay,A_inj,tig);
 
-        	 
+    #i=0;            
+    #while i < z36.size:
+    #    print(z36[i]);
+    #    i=i+1;        	 
     #UM = np.linspace(1,1,len(t));
     #UM = UM.transpose();
 
@@ -143,5 +146,5 @@ def resultados():
 	
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0')
-    #app.run(debug=False)
+    #app.run(debug=True)
     #app.run(debug=False, host='0.0.0.0')

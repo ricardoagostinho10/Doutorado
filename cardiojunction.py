@@ -1303,7 +1303,7 @@ class cardiojunction:
         tig = tig;
 
 
-        self.D = self.L;                          # Duracao do primeiro trem de pulso
+        self.D = self.L;                         # Duracao do primeiro trem de pulso
         
         self.w2 = 20;                         # Largura do pulso retangular no primeiro trem de pulso
         

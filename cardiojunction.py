@@ -221,17 +221,11 @@ class cardiojunction:
     
         elif self.protocol==3:
             v = y[38];    #Injecao de corrente    
-            if ((t > self.t_ap) and (t < self.t_ap + self.D)) and (np.remainder(t + (1000 - self.t_ap),(self.w + self.Delay)))<= (self.w+100 or self.w-100):   
-            #if ((t > self.t_ap) and (t < self.t_ap + self.D)) and ((t + (1000 - self.t_ap)%(self.w + self.Delay)))<= self.w:                    
-                I_app = self.A_inj;
-                				
-        
-            elif (t > self.t_ap + self.D) and (np.mod(t + (1000 - self.t_ap),(self.w2 + self.Delay2))<= self.w2):       ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 4 Hz durante 1s
-                    
-                I_app = self.A_inj2;
-                    
-            else:
-            
+            if ((t > self.t_ap) and t < self.t_ap + self.D) and (np.mod((t + (1000 - self.t_ap)),(self.w + self.Delay)))<= self.w:                                
+                I_app = self.A_inj;        
+            elif (t > self.t_ap + self.D) and (np.mod(t + (1000 - self.t_ap),(self.w2 + self.Delay2))<= self.w2):       ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 4 Hz durante 1s                    
+                I_app = self.A_inj2;                    
+            else:            
                 I_app = 0;
         
 #################################################################################################################################################
@@ -1295,9 +1289,9 @@ class cardiojunction:
         self.v_resting = v_resting;
 
         self.tap = tap;
-        if (w<30) and (protocol==1):		
-            w = 30;
-			
+
+        if(w<10):
+            w = 10;		
         self.w = w;
 
         self.f = f;
@@ -1718,17 +1712,11 @@ class cardiojunction:
                 I_app[i] = (V_clamp[i]- y39[i]/R_clamp);          
      
             elif(self.protocol==3):
-                if (t[i] > self.t_ap) and (t[i] < self.t_ap + self.D) and (np.remainder(t[i] + (1000 - self.t_ap),(self.w + self.Delay)))<= (self.w+100 or self.w-100):
-                ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 40 Hz durante 1s
-                #if (t[i] > self.t_ap) and (t[i] < self.t_ap + self.D) and ((t[i] + (1000 - self.t_ap) % (self.w + self.Delay)))<= self.w:                    
+                if ((t[i] > self.t_ap) and t[i] < self.t_ap + self.D) and (np.mod((t[i] + (1000 - self.t_ap)),(self.w + self.Delay)))<= self.w:                                				
                     I_app[i] = self.A_inj;    
-        
                 elif (t[i] > self.t_ap + self.D) and ((np.mod(t[i] + (1000 - self.t_ap)),(self.w2 + self.Delay2)))<= self.w2:        ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 4 Hz durante 1s
-                    
                     I_app[i] = self.A_inj2;
-                    
                 else:
-            
                     I_app[i] = 0;
             i=i+1;
         
@@ -1747,6 +1735,7 @@ class cardiojunction:
                 v[i] = z[i,38];    
             elif(self.protocol==3):
                 v[i] = z[i,38];
+                #print(v[i]);				
 
             Ka_junc[i] = 1/(1+(self.Kdact/Cac[i])**3);
             Ka_sl[i] = 1/(1+(self.Kdact/Cass[i])**3);

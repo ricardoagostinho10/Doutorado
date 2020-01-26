@@ -60,9 +60,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-	<a href="{{ url_for('principal') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Home</a>   
-	<a href="{{ url_for('parametros') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i> Parâmetros</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sobre</a><br> 
+    <a href="{{ url_for('principal') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Home</a>   
+	<a href="{{ url_for('parametros') }}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-envelope fa-fw"></i> Parâmetros</a>
+    <a href="{{ url_for('sobre') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sobre</a><br>
   
   </div>
 </nav>
@@ -88,7 +88,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>1</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>AP – [Ca<sup>2+</sup>] Cy – FORCE – SL</h4>
+        <h4>Potencial de ação (PA) – [Ca<sup>2+</sup>] <sub>Cy</sub> – FORÇA – Subsarcolema (SL)</h4>
       </div>
     </div>
 	
@@ -97,12 +97,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <a href="#" onclick="document.getElementById('grupo2').style.display='block';document.getElementById('grupo1').style.display='none';document.getElementById('grupo3').style.display='none';document.getElementById('grupo4').style.display='none';document.getElementById('grupo5').style.display='none';">
     <div class="w3-quarter">
       <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+        <div class="w3-left">2 - <i class="fa fa-eye w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>2</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>[Ca<sup>2+</sup>]Cleft – [Ca<sup>2+</sup>]SS – [Ca<sup>2+</sup>]Cy – [Ca<sup>2+</sup>]SR</h4>
+        <h4>[Ca<sup>2+</sup>]<sub>Cleft</sub> – [Ca<sup>2+</sup>]<sub>SS</sub> – [Ca<sup>2+</sup>]<sub>Cy</sub> – [Ca<sup>2+</sup>]<sub>SR</sub></h4>
       </div>
     </div>
 	</a>	
@@ -127,7 +126,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <h3>4</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>CICR – Leak SR – SR ATPase – SL ATPase</h4>
+        <h4>CICR – Leak RS – SR ATPase – SL ATPase</h4>
       </div>
     </div>
 </a>

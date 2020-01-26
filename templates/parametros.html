@@ -45,9 +45,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-	<a href="{{ url_for('principal') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Home</a>   
-	<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i> Parâmetros</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sobre</a><br>
+	<a href="{{ url_for('principal') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Home</a>   
+	<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-envelope fa-fw"></i> Parâmetros</a>
+    <a href="{{ url_for('sobre') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sobre</a><br>
   
   <!--
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
@@ -79,42 +79,40 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-quarter">
       <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>1</h3>
+        <div class="w3-left"><h4>1 - Cleft</h4></div>
+        <div class="w3-right">          
         </div>
-        <div class="w3-clear"></div>
-        <h4>Cleft</h4>
+        <div class="w3-clear"></div>        
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+        <div class="w3-left"><h4>2 - Subsarcolema</h4></div>
         <div class="w3-right">
-          <h3>2</h3>
+          
         </div>
         <div class="w3-clear"></div>
-        <h4>Subsarcolema</h4>
+        
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+        <div class="w3-left"><h4>3 - Citosol</h4></div>
         <div class="w3-right">
-          <h3>3</h3>
+          
         </div>
         <div class="w3-clear"></div>
-        <h4>Cytosol</h4>
+        
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+        <div class="w3-left"><h6>4 - Retículo Sarcoplasmatico</h6></div>
         <div class="w3-right">
-          <h3>4</h3>
+          
         </div>
         <div class="w3-clear"></div>
-        <h4>Retículo Sarcoplasmatico</h4>
+        
       </div>
     </div>
   </div>
@@ -122,7 +120,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third">
-        <h5>Modelo</h5>
+        <h6>Esquema gráfico dos 4 compartimentos</h6>
         <img src="{{ url_for('static', filename='img/tela_web.png') }}" style="width:100%" alt="Quatro compartimentos">
       </div>
       <div class="w3-twothird">
@@ -377,13 +375,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 						<input name="txtTempoSimulacao" value="5000" />
 					</td>
 				</tr>
-				<tr>
+				<tr id="voltagem">
 					<td>VOLTAGEM DE ESTIMULAÇÃO EM mV</td>
 					<td>
 						<input name="txtEstimuloVoltagem" value="15" />
 					</td>
 				</tr>
-				<tr>
+				<tr id="potencial">
 					<td>POTENCIAL DE REPOUSO EM mV</td>
 					<td>
 						<input name="txtPotencialRepouso" value="-80" />
@@ -470,10 +468,14 @@ document.getElementById('protocolo').style.display='none';
 document.getElementById('farmaco').style.display='none';
 document.getElementById('pop').style.display='none';
 if (document.getElementById('selProtocolo').value=="3"){	
-	document.getElementById('amplitude').style.display='none';
+	document.getElementById('potencial').style.display='none';
+	document.getElementById('voltagem').style.display='none';	
+	document.getElementById('amplitude').style.display='block';
 	}
 	else{		
-	document.getElementById('amplitude').style.display='block';
+	document.getElementById('amplitude').style.display='none';
+	document.getElementById('potencial').style.display='block';
+	document.getElementById('voltagem').style.display='block';		
 	}
 
 }

@@ -143,6 +143,10 @@ def parametros():
 @app.route('/resultados')
 def resultados():
     return render_template('resultados.html')
+
+@app.route('/sobre')
+def sobre():
+    return render_template('sobre.html')
 	
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0')

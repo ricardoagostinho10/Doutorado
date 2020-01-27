@@ -46,36 +46,53 @@ def get_plot():
     BLOCKINa = float(request.form['txtBloqueioINaFast'])/100;
     BLOCKICaL = float(request.form['txtBloqueioICaL'])/100;
     STIMULUSICaL = float(request.form['txtEstimuladorICaL'])/100;
-   
-    t_ap = int(request.form['txtInstanteAplicacaoPulso']);
+
+    if(protocol==1):
+        	
+        t_ap = int(request.form['txtInstanteAplicacaoPulsoPotencial']);
        
-    L = int(request.form['txtTempoSimulacao']);
+        L = int(request.form['txtTempoSimulacaoPotencial']);
 
-    #L = L - t_ap;
-	
-    #L = L - t_ap;	
-
-    Ap = int(request.form['txtEstimuloVoltagem']);
+        Ap = int(request.form['txtEstimuloVoltagemPotencial']);
         
-    v_resting = int(request.form['txtPotencialRepouso']);
+        v_resting = int(request.form['txtPotencialRepousoPotencial']);
 
-    tap = int(request.form['txtTempoSimulacaoAplicacao']);
+        tap = int(request.form['txtTempoSimulacaoAplicacaoPotencial']);
 
-    w = int(request.form['txtLarguraPulso']);
-
-    f = int(request.form['txtFrequencia']);
-        
-    Delay = 1000*1/f - w;
-
-    A_inj = float(request.form['txtAmplitudeInjetada']);
-        
-    tig = int(request.form['txtInstantePlotagem']);
-	
-    #arquivoNome = str(protocol) + str(Model_ICaL) + str(Model_Na) + str(Model_Ito) + str(Model_IKr) + str(Model_IKs) + str(Model_Force) + str(cellLength) + str(Lsarc) + str(BLOCKSRPUMP) + str(STIMULUSRPUMP) + str(BLOCKNCX) + str(STIMULUSNCX) + str(CAFEINA) + str(BLOCKCICR) + str(BLOCKIKs) + str(BLOCKIKr) + str(BLOCKItof) + str(BLOCKItos) + str(BLOCKINa) + str(BLOCKICaL) + str(STIMULUSICaL) + str(t_ap) + str(L) + str(Ap) + str(v_resting) + str(tap) + str(w) + str(f) + str(Delay) + str(A_inj) + str(tig);
+        w = int(request.form['txtLarguraPulsoPotencial']);
+        if(w<10):
+            w = 10;		
 		
-    #print(str(protocol));
+        f = int(request.form['txtFrequenciaPotencial']);
+        
+        Delay = 1000*1/f - w;
 
-    
+        A_inj = float(request.form['txtAmplitudeInjetadaInjetada']);
+        
+        tig = int(request.form['txtInstantePlotagemPotencial']);
+    else:
+        t_ap = int(request.form['txtInstanteAplicacaoPulsoInjetada']);
+       
+        L = int(request.form['txtTempoSimulacaoInjetada']);
+
+        Ap = int(request.form['txtEstimuloVoltagemPotencial']);
+        
+        v_resting = int(request.form['txtPotencialRepousoPotencial']);
+
+        tap = int(request.form['txtTempoSimulacaoAplicacaoInjetada']);
+
+        w = int(request.form['txtLarguraPulsoInjetada']);
+        if(w<10):
+            w = 10;		
+		
+        f = int(request.form['txtFrequenciaInjetada']);
+        
+        Delay = 1000*1/f - w;
+
+        tig = int(request.form['txtInstantePlotagemInjetada']);
+		
+        A_inj = float(request.form['txtAmplitudeInjetadaInjetada']);
+        
     c = cardiojunction();
 	
     [t,I_app,v,I_Ca,I_Na,z37,z35,z36,z30,I_kr,I_ks,C0KsC1Ks,O1KsO2Ks,OKr,C1KrC2KrC3Kr,I_kp,I_ki,
@@ -84,13 +101,6 @@ def get_plot():
     Po,z40,z41,z42,z43,z44,z45,z4041,z4243,z4445,z3,z4,ONa,z484950,z515253,z5455,
     z0,z1,z2,I_tos,I_tof,Of,If,Os,Is,C0fC1fC2fC3f,CI0fCI1fCI2fCI3f,C0sC1sC2sC3s,CI0sCI1sCI2sCI3s,z7,
     z8,z9,z10,FORCA,Lsim,Cacy,CelL,Fcontr,N0,N1,P0,P1,P2,P3,SL,IKur,IKss]=c.principal(protocol, Model_ICaL, Model_Na, Model_Ito, Model_IKr, Model_IKs, Model_Force,cellLength, Lsarc, BLOCKSRPUMP,STIMULUSRPUMP,BLOCKNCX,STIMULUSNCX,CAFEINA,BLOCKCICR,BLOCKIKs,BLOCKIKr,BLOCKItof,BLOCKItos,BLOCKINa,BLOCKICaL,STIMULUSICaL,t_ap,L,Ap,v_resting,tap,w,f,Delay,A_inj,tig);
-
-    #i=0;            
-    #while i < z36.size:
-    #    print(z36[i]);
-    #    i=i+1;        	 
-    #UM = np.linspace(1,1,len(t));
-    #UM = UM.transpose();
 
     graphs = [
          dict(data=[dict(x=t,y=v,type='scatter')],layout=dict(title='Voltagem',yaxis=dict(title= 'm/V',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),

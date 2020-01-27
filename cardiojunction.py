@@ -1290,8 +1290,6 @@ class cardiojunction:
 
         self.tap = tap;
 
-        if(w<10):
-            w = 10;		
         self.w = w;
 
         self.f = f;

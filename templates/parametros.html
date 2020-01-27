@@ -12,8 +12,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			#pop{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
 			#farmaco{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
 			#protocolo{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
-			#simulacao{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
-			#amplitude{display:block;}
+			#simulacaoInjetada{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}
+			#simulacaoPotencial{display:none;position:absolute;top:30%;left:50%;margin-left:-150px;margin-top:-100px;padding:10px;width:auto;height:auto;border:1px solid #d0d0d0; background-color: rgb(201, 201, 201);}			
 
 </style>
 <body class="w3-light-grey">
@@ -48,19 +48,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	<a href="{{ url_for('principal') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Home</a>   
 	<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-envelope fa-fw"></i> Parâmetros</a>
     <a href="{{ url_for('sobre') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Sobre</a><br>
-  
-  <!--
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
-	-->
   </div>
 </nav>
 
@@ -129,17 +116,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <tr>
             <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
             <td>Deseja alterar a modelagem dos canais iônicos?</td>
-            <td><i><button type="button" onclick="document.getElementById('pop').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacao').style.display='none';">Clique Aqui!</button></i></td>
+            <td><i><button type="button" onclick="document.getElementById('pop').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacaoInjetada').style.display='none';document.getElementById('simulacaoPotencial').style.display='none';"">Clique Aqui!</button></i></td>
           </tr>
           <tr>
             <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
             <td>Deseja realizar a aplicação de fármacos?</td>
-            <td><i><button type="button" onclick="document.getElementById('farmaco').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('pop').style.display='none';document.getElementById('simulacao').style.display='none';">Clique Aqui!</button></i></td>
+            <td><i><button type="button" onclick="document.getElementById('farmaco').style.display='block';document.getElementById('protocolo').style.display='none';document.getElementById('pop').style.display='none';document.getElementById('simulacaoInjetada').style.display='none';document.getElementById('simulacaoPotencial').style.display='none';"">Clique Aqui!</button></i></td>
           </tr>
           <tr>
             <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
             <td>  Qual o protocolo de simulação?</td>
-            <td><i><button type="button" onclick="document.getElementById('protocolo').style.display='block';document.getElementById('pop').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacao').style.display='none';">Clique Aqui!</button></i></td>
+            <td><i><button type="button" onclick="document.getElementById('protocolo').style.display='block';document.getElementById('pop').style.display='none';document.getElementById('farmaco').style.display='none';document.getElementById('simulacaoInjetada').style.display='none';document.getElementById('simulacaoPotencial').style.display='none';">Clique Aqui!</button></i></td>
           </tr>
           <tr>
             <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
@@ -348,7 +335,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 						Escolha o Protocolo para Simulação
 					</td>
 					<td>
-						<select id="selProtocolo" name="selProtocolo" onChange="alterarParametro()">
+						<select id="selProtocolo" name="selProtocolo">
 							<option value="1" selected>Potencial de ação artificial</option>
 							
 							<option value="3">Injeção de corrente</option>
@@ -360,61 +347,105 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </table>
 </div>
 
-<div id="simulacao" class="container">
-<a href="#" onclick="document.getElementById('simulacao').style.display='none';">[Fechar]</a>
+<div id="simulacaoPotencial" class="container">
+<a href="#" onclick="document.getElementById('simulacaoPotencial').style.display='none';">[Fechar]</a>
 <table border="0">
 				<tr>
 					<td>INSTANTE PARA APLICAÇÃO DO PULSO EM ms</td>
 					<td>
-						<input name="txtInstanteAplicacaoPulso" value="1000" />
+						<input name="txtInstanteAplicacaoPulsoPotencial" value="1000" />
 					</td>
 				</tr>
 				<tr>
 					<td>TEMPO DE SIMULAÇÃO EM ms</td>
 					<td>
-						<input name="txtTempoSimulacao" value="5000" />
+						<input name="txtTempoSimulacaoPotencial" value="5000" />
 					</td>
 				</tr>
-				<tr id="voltagem">
+				<tr>
 					<td>VOLTAGEM DE ESTIMULAÇÃO EM mV</td>
 					<td>
-						<input name="txtEstimuloVoltagem" value="15" />
+						<input name="txtEstimuloVoltagemPotencial" value="15" />
 					</td>
 				</tr>
-				<tr id="potencial">
+				<tr>
 					<td>POTENCIAL DE REPOUSO EM mV</td>
 					<td>
-						<input name="txtPotencialRepouso" value="-80" />
+						<input name="txtPotencialRepousoPotencial" value="-80" />
 					</td>
 				</tr>
 				<tr>
 					<td>TEMPO DE SIMULAÇÃO APÓS APLICAÇÃO DO PULSO EM ms</td>
 					<td>
-						<input name="txtTempoSimulacaoAplicacao" value="0" />
+						<input name="txtTempoSimulacaoAplicacaoPotencial" value="0" />
 					</td>
 				</tr>
 				<tr>
 					<td>LARGURA DO PULSO EM ms</td>
 					<td>
-						<input name="txtLarguraPulso" id="txtLarguraPulso" value="200" />
+						<input name="txtLarguraPulsoPotencial" id="txtLarguraPulsoPotencial" value="200" />
 					</td>
 				</tr>
 				<tr>
 					<td>FREQUÊNCIA EM Hz</td>
 					<td>
-						<input name="txtFrequencia" value="1" />
+						<input name="txtFrequenciaPotencial" value="1" />
 					</td>
 				</tr>
 				<tr>
 					<td>INSTANTE PARA PLOTAGEM EM ms</td>
 					<td>
-						<input name="txtInstantePlotagem" value="0" />
+						<input name="txtInstantePlotagemPotencial" value="0" />
 					</td>
 				</tr>
-				<tr id="amplitude">				
+			</table>
+			<br>
+	</div>
+
+
+<div id="simulacaoInjetada" class="container">
+<a href="#" onclick="document.getElementById('simulacaoInjetada').style.display='none';">[Fechar]</a>
+<table border="0">
+				<tr>
+					<td>INSTANTE PARA APLICAÇÃO DO PULSO EM ms</td>
+					<td>
+						<input name="txtInstanteAplicacaoPulsoInjetada" value="1000" />
+					</td>
+				</tr>
+				<tr>
+					<td>TEMPO DE SIMULAÇÃO EM ms</td>
+					<td>
+						<input name="txtTempoSimulacaoInjetada" value="5000" />
+					</td>
+				</tr>
+				<tr>
+					<td>TEMPO DE SIMULAÇÃO APÓS APLICAÇÃO DO PULSO EM ms</td>
+					<td>
+						<input name="txtTempoSimulacaoAplicacaoInjetada" value="0" />
+					</td>
+				</tr>
+				<tr>
+					<td>LARGURA DO PULSO EM ms</td>
+					<td>
+						<input name="txtLarguraPulsoInjetada" id="txtLarguraPulsoInjetada" value="5" />
+					</td>
+				</tr>
+				<tr>
+					<td>FREQUÊNCIA EM Hz</td>
+					<td>
+						<input name="txtFrequenciaInjetada" value="1" />
+					</td>
+				</tr>
+				<tr>
+					<td>INSTANTE PARA PLOTAGEM EM ms</td>
+					<td>
+						<input name="txtInstantePlotagemInjetada" value="0" />
+					</td>
+				</tr>
+				<tr>				
 					<td>AMPLITUDE DA CORRENTE INJETADA EM uA/uF</td>
 					<td>
-						<input name="txtAmplitudeInjetada" id="txtAmplitudeInjetada" value="9.5" />
+						<input name="txtAmplitudeInjetadaInjetada" id="txtAmplitudeInjetadaInjetada" value="9.5" />
 					</td>					
 				</tr>
 			</table>
@@ -463,32 +494,20 @@ function w3_open() {
 }
 
 function parametros(){
-document.getElementById('simulacao').style.display='block';
 document.getElementById('protocolo').style.display='none';
 document.getElementById('farmaco').style.display='none';
 document.getElementById('pop').style.display='none';
 if (document.getElementById('selProtocolo').value=="3"){	
-	document.getElementById('potencial').style.display='none';
-	document.getElementById('voltagem').style.display='none';	
-	document.getElementById('amplitude').style.display='block';
+	document.getElementById('simulacaoPotencial').style.display='none';
+	document.getElementById('simulacaoInjetada').style.display='block';
 	}
 	else{		
-	document.getElementById('amplitude').style.display='none';
-	document.getElementById('potencial').style.display='block';
-	document.getElementById('voltagem').style.display='block';		
+	document.getElementById('simulacaoInjetada').style.display='none';
+	document.getElementById('simulacaoPotencial').style.display='block';	
 	}
 
 }
 
-function alterarParametro(){
-if (document.getElementById("selProtocolo").value=="3"){
-	document.getElementById("txtLarguraPulso").value = 5;			
-	}
-	else{
-	document.getElementById("txtLarguraPulso").value = 200;	
-	}
-
-}
 
 // Close the sidebar with the close button
 function w3_close() {

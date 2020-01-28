@@ -93,17 +93,17 @@ def get_plot():
 		
         A_inj = float(request.form['txtAmplitudeInjetadaInjetada']);
 
-    print(protocol);	    
-    print(t_ap);
-    print(L);
-    print(Ap);
-    print(v_resting);
-    print(tap);
-    print(f);    
-    print(Delay);
-    print(tig);
-    print(A_inj);	
-    print(w);
+#    print(protocol);	    
+#    print(t_ap);
+#    print(L);
+#    print(Ap);
+#    print(v_resting);
+#    print(tap);
+#    print(f);    
+#    print(Delay);
+#    print(tig);
+#    print(A_inj);	
+#    print(w);
     c = cardiojunction();
 	
     [t,I_app,v,I_Ca,I_Na,z37,z35,z36,z30,I_kr,I_ks,C0KsC1Ks,O1KsO2Ks,OKr,C1KrC2KrC3Kr,I_kp,I_ki,
@@ -177,6 +177,6 @@ if __name__ == "__main__":
 #    except: print('Psyco optimizer not installed');
     
     #app.run(debug=True)
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
     
     #app.run(debug=False, host='0.0.0.0')

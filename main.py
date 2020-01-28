@@ -60,8 +60,8 @@ def get_plot():
         tap = int(request.form['txtTempoSimulacaoAplicacaoPotencial']);
 
         w = int(request.form['txtLarguraPulsoPotencial']);
-        if(w<10):
-            w = 10;		
+#        if(w<10):
+#            w = 10;		
 		
         f = int(request.form['txtFrequenciaPotencial']);
         
@@ -82,8 +82,8 @@ def get_plot():
         tap = int(request.form['txtTempoSimulacaoAplicacaoInjetada']);
 
         w = int(request.form['txtLarguraPulsoInjetada']);
-        if(w<10):
-            w = 10;		
+#        if(w<10):
+#            w = 10;		
 		
         f = int(request.form['txtFrequenciaInjetada']);
         
@@ -92,7 +92,18 @@ def get_plot():
         tig = int(request.form['txtInstantePlotagemInjetada']);
 		
         A_inj = float(request.form['txtAmplitudeInjetadaInjetada']);
-        
+
+    print(protocol);	    
+    print(t_ap);
+    print(L);
+    print(Ap);
+    print(v_resting);
+    print(tap);
+    print(f);    
+    print(Delay);
+    print(tig);
+    print(A_inj);	
+    print(w);
     c = cardiojunction();
 	
     [t,I_app,v,I_Ca,I_Na,z37,z35,z36,z30,I_kr,I_ks,C0KsC1Ks,O1KsO2Ks,OKr,C1KrC2KrC3Kr,I_kp,I_ki,
@@ -159,6 +170,13 @@ def sobre():
     return render_template('sobre.html')
 	
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0')
+#    try:
+#        import psyco
+#        print("opa");		
+#        psyco.full();
+#    except: print('Psyco optimizer not installed');
+    
     #app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')
+    
     #app.run(debug=False, host='0.0.0.0')

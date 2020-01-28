@@ -135,6 +135,133 @@ class cardiojunction:
     step = 0
     acumuladorCorrente = []
 
+    def limparClasse(self):
+
+        self.contador = 0;
+        self.f = 0; 
+        self.f2 = 0;
+        self.w = 0; 
+        self.w2 = 0; 
+        self.t_ap = 0; 
+        self.L = 0; 
+        self.Delay = 0; 
+        self.Delay2 = 0; 
+        self.Ap = 0; 
+        self.tap = 0; 
+        self.tsim = 0; 
+        self.protocol = 0; 
+        self.A_inj = 0; 
+        self.A_inj2 = 0; 
+        self.BLOCKSRPUMP = 0;
+        self.Model_Na = 0; 
+        self.Model_Ito = 0; 
+        self.STIMULUSRPUMP = 0; 
+        self.BLOCKNCX = 0; 
+        self.STIMULUSNCX = 0; 
+        self.CAFEINA = 0; 
+        self.BLOCKCICR = 0; 
+        self.Model_ICaL = 0; 
+        self.GNaL = 0; 
+        self.PCam = 0; 
+        self.v_resting = 0; 
+        self.D = 0; 
+
+        self.alfaneg = 0;
+        self.betaneg = 0; 
+        self.Lsarc = 0; 
+        self.Model_Force = 0; 
+        self.alfaaj = 0; 
+        self.betaaj = 0; 
+        self.Fmax = 0; 
+        self.Lajust = 0; 
+        self.Model_IKr = 0; 
+        self.Model_IKs = 0; 
+        self.GKs = 0; 
+        self.cellLength = 0; 
+        self.BLOCKIKs = 0; 
+        self.BLOCKIKr = 0; 
+        self.BLOCKItos = 0;  
+        self.BLOCKItof = 0; 
+        self.BLOCKINa = 0; 
+        self.BLOCKICaL = 0; 
+        self.STIMULUSICaL = 0;
+        self.FoRT = 0; 
+        self.Qpow = 0;  
+        self.Nao = 0; 
+        self.Cao = 0; 
+        self.Ko = 0; 
+        self.TSt = 0; 
+        self.fit = 0; 
+
+        self.GNa = 0; 
+        self.IbarNaK = 0; 
+        self.KmNaip = 0; 
+        self.KmKo = 0; 
+        self.pNaK  = 0;
+        self.GtoSlow = 0;
+        self.GtoFast = 0; 
+        self.gkp = 0; 
+        self.Fjunc = 0; 
+        self.Fsl = 0; 
+        self.gkr = 0; 
+        self.kiss = 0;
+        self.kisss = []
+        self.Fjunc_CaL = 0; 
+        self.Fsl_CaL = 0; 
+        self.pCa  = 0;
+        self.GSrLeak = 0; 
+        self.gCai = 0; 
+        self.gCao = 0;    
+
+        self.Q10CaL = 0;
+        self.J_na_juncsl = 0;
+        self.Vjunc = 0; 
+        self.GNam = 0; 
+        self.I_scale_Na = 0; 
+        self.GItof = 0; 
+        self.GItos = 0; 
+        self.fatorgks = 0; 
+        self.GKss = 0; 
+        self.GKur = 0;
+
+        self.IbarNCX = 0;
+        self.Q10NCX = 0;
+        self.ksat = 0; 
+        self.nu = 0; 
+        self.KmNai = 0; 
+        self.KmNao = 0; 
+        self.KmCai = 0; 
+        self.KmCao = 0; 
+        self.Kdact = 0; 
+        self.Q10SLCaP = 0; 
+        self.IbarSLCaP = 0;
+        self.KmPCa = 0; 
+        self.ks = 0; 
+        self.GCaB = 0; 
+        self.ICa_scale = 0;
+    
+
+        self.Kmf = 0;
+        self.Kmr = 0; 
+        self.hillSRCaP = 0; 
+        self.Q10SRCaP = 0; 
+        self.Vmax_SRCaP = 0; 
+        self.Frdy = 0; 
+        self.Kp = 0; 
+        self.Kw = 0; 
+        self.Ke = 0; 
+        self.Lo = 0; 
+        self.Le = 0; 
+        self.a = 0;
+        self.pulso = []
+        self.sol = []
+        self.tempo = []
+        self.novoTempo = []
+        self.vetoriKr = []
+        self.repouso = 0
+        self.step = 0
+        self.acumuladorCorrente = []	
+	
     def vetorPulso(self, largura, delay, L, t_ap):
         item = t_ap
         cont = 0
@@ -1236,7 +1363,8 @@ class cardiojunction:
 #        pasta = str(protocol)+str(Model_ICaL)+str(Model_Na)+str(Model_Ito)+str(Model_IKr)+str(Model_IKs)+str(Model_Force)+str(cellLength)+str(Lsarc)+str(BLOCKSRPUMP)+str(STIMULUSRPUMP)+str(BLOCKNCX)+str(STIMULUSNCX)+str(CAFEINA)+str(BLOCKCICR)+str(BLOCKIKs)+str(BLOCKIKr)+str(BLOCKItof)+str(BLOCKItos)+str(BLOCKINa)+str(BLOCKICaL)+str(STIMULUSICaL)+str(t_ap)+str(L)+str(Ap)+str(v_resting)+str(tap)+str(w)+str(f)+str(Delay)+str(A_inj)+str(tig)
 		
         
-		
+#        del self # so apagas esta referencia para o objeto nao o objeto em si
+        self.limparClasse();		
         self.protocol = protocol;
         
         self.Model_ICaL = Model_ICaL;
@@ -1290,6 +1418,8 @@ class cardiojunction:
 
         self.tap = tap;
 
+        if(w<10):
+            w=10;		
         self.w = w;
 
         self.f = f;

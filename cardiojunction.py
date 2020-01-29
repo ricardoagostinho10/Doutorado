@@ -133,134 +133,7 @@ class cardiojunction:
     vetoriKr = []
     repouso = 0
     step = 0
-    acumuladorCorrente = []
-
-    def limparClasse(self):
-
-        self.contador = 0;
-        self.f = 0; 
-        self.f2 = 0;
-        self.w = 0; 
-        self.w2 = 0; 
-        self.t_ap = 0; 
-        self.L = 0; 
-        self.Delay = 0; 
-        self.Delay2 = 0; 
-        self.Ap = 0; 
-        self.tap = 0; 
-        self.tsim = 0; 
-        self.protocol = 0; 
-        self.A_inj = 0; 
-        self.A_inj2 = 0; 
-        self.BLOCKSRPUMP = 0;
-        self.Model_Na = 0; 
-        self.Model_Ito = 0; 
-        self.STIMULUSRPUMP = 0; 
-        self.BLOCKNCX = 0; 
-        self.STIMULUSNCX = 0; 
-        self.CAFEINA = 0; 
-        self.BLOCKCICR = 0; 
-        self.Model_ICaL = 0; 
-        self.GNaL = 0; 
-        self.PCam = 0; 
-        self.v_resting = 0; 
-        self.D = 0; 
-
-        self.alfaneg = 0;
-        self.betaneg = 0; 
-        self.Lsarc = 0; 
-        self.Model_Force = 0; 
-        self.alfaaj = 0; 
-        self.betaaj = 0; 
-        self.Fmax = 0; 
-        self.Lajust = 0; 
-        self.Model_IKr = 0; 
-        self.Model_IKs = 0; 
-        self.GKs = 0; 
-        self.cellLength = 0; 
-        self.BLOCKIKs = 0; 
-        self.BLOCKIKr = 0; 
-        self.BLOCKItos = 0;  
-        self.BLOCKItof = 0; 
-        self.BLOCKINa = 0; 
-        self.BLOCKICaL = 0; 
-        self.STIMULUSICaL = 0;
-        self.FoRT = 0; 
-        self.Qpow = 0;  
-        self.Nao = 0; 
-        self.Cao = 0; 
-        self.Ko = 0; 
-        self.TSt = 0; 
-        self.fit = 0; 
-
-        self.GNa = 0; 
-        self.IbarNaK = 0; 
-        self.KmNaip = 0; 
-        self.KmKo = 0; 
-        self.pNaK  = 0;
-        self.GtoSlow = 0;
-        self.GtoFast = 0; 
-        self.gkp = 0; 
-        self.Fjunc = 0; 
-        self.Fsl = 0; 
-        self.gkr = 0; 
-        self.kiss = 0;
-        self.kisss = []
-        self.Fjunc_CaL = 0; 
-        self.Fsl_CaL = 0; 
-        self.pCa  = 0;
-        self.GSrLeak = 0; 
-        self.gCai = 0; 
-        self.gCao = 0;    
-
-        self.Q10CaL = 0;
-        self.J_na_juncsl = 0;
-        self.Vjunc = 0; 
-        self.GNam = 0; 
-        self.I_scale_Na = 0; 
-        self.GItof = 0; 
-        self.GItos = 0; 
-        self.fatorgks = 0; 
-        self.GKss = 0; 
-        self.GKur = 0;
-
-        self.IbarNCX = 0;
-        self.Q10NCX = 0;
-        self.ksat = 0; 
-        self.nu = 0; 
-        self.KmNai = 0; 
-        self.KmNao = 0; 
-        self.KmCai = 0; 
-        self.KmCao = 0; 
-        self.Kdact = 0; 
-        self.Q10SLCaP = 0; 
-        self.IbarSLCaP = 0;
-        self.KmPCa = 0; 
-        self.ks = 0; 
-        self.GCaB = 0; 
-        self.ICa_scale = 0;
-    
-
-        self.Kmf = 0;
-        self.Kmr = 0; 
-        self.hillSRCaP = 0; 
-        self.Q10SRCaP = 0; 
-        self.Vmax_SRCaP = 0; 
-        self.Frdy = 0; 
-        self.Kp = 0; 
-        self.Kw = 0; 
-        self.Ke = 0; 
-        self.Lo = 0; 
-        self.Le = 0; 
-        self.a = 0;
-        self.pulso = []
-        self.sol = []
-        self.tempo = []
-        self.novoTempo = []
-        self.vetoriKr = []
-        self.repouso = 0
-        self.step = 0
-        self.acumuladorCorrente = []	
+    acumuladorCorrente = []    
 	
     def vetorPulso(self, largura, delay, L, t_ap):
         item = t_ap
@@ -290,7 +163,6 @@ class cardiojunction:
             
     def calculos(self,y,t):
         ydot = np.zeros(shape=(113)); # Numero de Equacoes Diferenciais Acopladas
-
 #################################################################################################################################################
  
 ## Protocolo para simulacao
@@ -301,20 +173,17 @@ class cardiojunction:
             
             if t <= self.t_ap:                                #[ms]
     
-#TirarAqui                v = self.v_resting;                          #[mV]        
                 A = -self.v_resting + self.Ap;    
                 sig = self.pulse_train(t)
                 v = A * sig + self.v_resting                     # Amplitude do pulso
                 
             elif t > self.t_ap and t <= self.t_ap + self.L:    
-                #print(t);
                 A = -self.v_resting + self.Ap;    
                 sig = self.pulse_train(t)
                 v = A * sig + self.v_resting                     # Amplitude do pulso
 
             else:
     
-#TirarAqui                v = self.v_resting;            #[mV]                
                 A = -self.v_resting + self.Ap;    
                 sig = self.pulse_train(t)
                 v = A * sig + self.v_resting                     # Amplitude do pulso
@@ -346,10 +215,12 @@ class cardiojunction:
 
       
     
-        elif self.protocol==3:
+        elif self.protocol==3:            		
             v = y[38];    #Injecao de corrente    
+			
             if ((t > self.t_ap) and t < self.t_ap + self.D) and (np.mod((t + (1000 - self.t_ap)),(self.w + self.Delay)))<= self.w:                                
                 I_app = self.A_inj;        
+                			
             elif (t > self.t_ap + self.D) and (np.mod(t + (1000 - self.t_ap),(self.w2 + self.Delay2))<= self.w2):       ##ok<AND2> #corrente injetada de 10 uA/uF com frequencia de 4 Hz durante 1s                    
                 I_app = self.A_inj2;                    
             else:            
@@ -1342,9 +1213,9 @@ class cardiojunction:
         I_Cl_tot = I_ClCa + I_Clbk;                        # [uA/uF]
         I_Ca_tot = I_Ca_tot_junc + I_Ca_tot_sl;
         I_tot = I_Na_tot + I_Cl_tot +I_Ca_tot + I_K_tot;
-        
-        ydot[38] = -(I_tot-I_app);       
-        return ydot
+        ydot[38] = -(I_tot-I_app);
+        #print(ydot[38]);									
+        return ydot;
 #######################################################################################################################################################################
             
     def principal(self, protocol, Model_ICaL, Model_Na, Model_Ito, Model_IKr, Model_IKs, Model_Force, cellLength, Lsarc,
@@ -1364,7 +1235,7 @@ class cardiojunction:
 		
         
 #        del self # so apagas esta referencia para o objeto nao o objeto em si
-        self.limparClasse();		
+        #self.limparClasse();		
         self.protocol = protocol;
         
         self.Model_ICaL = Model_ICaL;
@@ -1418,8 +1289,8 @@ class cardiojunction:
 
         self.tap = tap;
 
-        if(w<10):
-            w=10;		
+#        if(w<10):
+#            w=10;		
         self.w = w;
 
         self.f = f;
@@ -1429,7 +1300,6 @@ class cardiojunction:
         self.A_inj = A_inj;
         
         tig = tig;
-
 
         self.D = self.L;                         # Duracao do primeiro trem de pulso
         
@@ -1443,10 +1313,6 @@ class cardiojunction:
         
         self.tsim = self.t_ap + self.L + self.tap          ##ok<NOPTS> # tempo total de simulacao em ms
         
-        #print(self.w);
-        #print(self.L);		
-        #print(self.Delay);		
-		
         self.vetorPulso(self.w,self.Delay,L, self.t_ap)
     
 #tig = 2000;                         # instante a partir do qual deseja visualizar os graficos
@@ -1588,14 +1454,44 @@ class cardiojunction:
         ynit = Y0;
 
         backend = 'dopri5'
+        #backend = 'zvode'		
 
-        iteracoes = t_final * 5;
+
+        iteracoes = t_final * 5;		
+        t= np.zeros(iteracoes)        
+        tempo= np.zeros(iteracoes)		
         tempo = np.linspace(t_start,t_final,iteracoes)
         solver = inte.odeint (self.calculos, ynit, tempo, full_output=True)                   
 
         z = np.array(solver[0]);
         t = np.array(tempo);
-        
+		
+		#extrair aqui calculo inte.ode
+		
+        #solver = inte.ode(self.calculos).set_integrator(backend, rtol=delta_t, nsteps=1, max_step=0.05);
+        #solver = inte.ode(self.calculos).set_integrator(backend, method='bdf', rtol=0.2, nsteps=1,max_step=0.5);		
+        #solver = inte.ode(self.calculos).set_integrator(backend, method='bdf', nsteps=1, max_step=5000);		
+		
+        #solver.set_initial_value(ynit,t_start);
+
+        #warnings.filterwarnings("ignore", category=UserWarning)
+        #solver._integrator.iwork[2] = -1
+        #self.sol = []
+        #self.tempo = []
+        #self.sol.append(Y0)
+        #self.tempo.append(t_start)
+        #print(solver.t)
+        #while solver.t < t_final:               
+        #    solver.integrate(t_final,step=True)
+        #    self.tempo.append(solver.t)
+        #    self.sol.append(solver.y)
+            #print(solver.y[38])			
+        #warnings.resetwarnings()
+        #print("ufa");        
+        #t = np.array(self.tempo)
+        #z = np.array(self.sol)		
+        # ate aqui para o calculo com inte.ode
+		
         Cac = z[:,35];
         Cass = z[:,36];
         Cacy = z[:,37];
@@ -1853,7 +1749,6 @@ class cardiojunction:
 
             
             if self.protocol==1:    
-#TirarAqui                    v[i]= self.v_resting;  ##ok<SAGROW>
                 A = -self.v_resting + self.Ap
 
                 sig = self.pulse_train(t[i])
@@ -1863,7 +1758,6 @@ class cardiojunction:
                 v[i] = z[i,38];    
             elif(self.protocol==3):
                 v[i] = z[i,38];
-                #print(v[i]);				
 
             Ka_junc[i] = 1/(1+(self.Kdact/Cac[i])**3);
             Ka_sl[i] = 1/(1+(self.Kdact/Cass[i])**3);

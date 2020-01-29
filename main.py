@@ -60,8 +60,6 @@ def get_plot():
         tap = int(request.form['txtTempoSimulacaoAplicacaoPotencial']);
 
         w = int(request.form['txtLarguraPulsoPotencial']);
-#        if(w<10):
-#            w = 10;		
 		
         f = int(request.form['txtFrequenciaPotencial']);
         
@@ -82,8 +80,6 @@ def get_plot():
         tap = int(request.form['txtTempoSimulacaoAplicacaoInjetada']);
 
         w = int(request.form['txtLarguraPulsoInjetada']);
-#        if(w<10):
-#            w = 10;		
 		
         f = int(request.form['txtFrequenciaInjetada']);
         
@@ -93,17 +89,6 @@ def get_plot():
 		
         A_inj = float(request.form['txtAmplitudeInjetadaInjetada']);
 
-#    print(protocol);	    
-#    print(t_ap);
-#    print(L);
-#    print(Ap);
-#    print(v_resting);
-#    print(tap);
-#    print(f);    
-#    print(Delay);
-#    print(tig);
-#    print(A_inj);	
-#    print(w);
     c = cardiojunction();
 	
     [t,I_app,v,I_Ca,I_Na,z37,z35,z36,z30,I_kr,I_ks,C0KsC1Ks,O1KsO2Ks,OKr,C1KrC2KrC3Kr,I_kp,I_ki,
@@ -113,8 +98,16 @@ def get_plot():
     z0,z1,z2,I_tos,I_tof,Of,If,Os,Is,C0fC1fC2fC3f,CI0fCI1fCI2fCI3f,C0sC1sC2sC3s,CI0sCI1sCI2sCI3s,z7,
     z8,z9,z10,FORCA,Lsim,Cacy,CelL,Fcontr,N0,N1,P0,P1,P2,P3,SL,IKur,IKss]=c.principal(protocol, Model_ICaL, Model_Na, Model_Ito, Model_IKr, Model_IKs, Model_Force,cellLength, Lsarc, BLOCKSRPUMP,STIMULUSRPUMP,BLOCKNCX,STIMULUSNCX,CAFEINA,BLOCKCICR,BLOCKIKs,BLOCKIKr,BLOCKItof,BLOCKItos,BLOCKINa,BLOCKICaL,STIMULUSICaL,t_ap,L,Ap,v_resting,tap,w,f,Delay,A_inj,tig);
 
+#    i=0;
+
+#    while i < v.size:
+#        if(v[i]>-72):
+#            print(v[i]);
+#            print(t[i]);
+#        i=i+1;
+		
     graphs = [
-         dict(data=[dict(x=t,y=v,type='scatter')],layout=dict(title='Voltagem',yaxis=dict(title= 'm/V',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),
+         dict(data=[dict(x=t,y=v,type='scatter')],layout=dict(title='Potencial de ação',yaxis=dict(title= 'm/V',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=z36,type='scatter'),],layout=dict(title='Ca<sup>2+</sup>CYT',yaxis=dict(title= '[Ca<sup>2+</sup>]cyt in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=Fcontr,type='scatter',)],layout=dict(title='Força de Contração',yaxis=dict(title= 'Force in mN/mm<sup>2</sup>',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=SL,type='scatter',)],layout=dict(title='SL',yaxis=dict(title= 'Sarcomere length in um',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			

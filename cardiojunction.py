@@ -7,7 +7,7 @@ warnings.filterwarnings('ignore')
 import os
 import pandas as pd
 import json
-
+from scipy.integrate import solve_ivp
 
 class cardiojunction:
     contador = 0;
@@ -1213,6 +1213,8 @@ class cardiojunction:
         I_Cl_tot = I_ClCa + I_Clbk;                        # [uA/uF]
         I_Ca_tot = I_Ca_tot_junc + I_Ca_tot_sl;
         I_tot = I_Na_tot + I_Cl_tot +I_Ca_tot + I_K_tot;
+        #if self.w < 30 and ((t > self.t_ap) and t < self.t_ap + self.D) and (np.mod((t + (1000 - self.t_ap)),(self.w + self.Delay)))<= self.w:                                
+        #    print(I_tot);                   
         ydot[38] = -(I_tot-I_app);
         #print(ydot[38]);									
         return ydot;
@@ -1452,45 +1454,26 @@ class cardiojunction:
         t_final = self.tsim;
         delta_t = 1e-5;
         ynit = Y0;
-
-        backend = 'dopri5'
-        #backend = 'zvode'		
-
-
         iteracoes = t_final * 5;		
         t= np.zeros(iteracoes)        
         tempo= np.zeros(iteracoes)		
         tempo = np.linspace(t_start,t_final,iteracoes)
-        solver = inte.odeint (self.calculos, ynit, tempo, full_output=True)                   
-
-        z = np.array(solver[0]);
-        t = np.array(tempo);
 		
-		#extrair aqui calculo inte.ode
-		
-        #solver = inte.ode(self.calculos).set_integrator(backend, rtol=delta_t, nsteps=1, max_step=0.05);
-        #solver = inte.ode(self.calculos).set_integrator(backend, method='bdf', rtol=0.2, nsteps=1,max_step=0.5);		
-        #solver = inte.ode(self.calculos).set_integrator(backend, method='bdf', nsteps=1, max_step=5000);		
-		
-        #solver.set_initial_value(ynit,t_start);
-
-        #warnings.filterwarnings("ignore", category=UserWarning)
-        #solver._integrator.iwork[2] = -1
-        #self.sol = []
-        #self.tempo = []
-        #self.sol.append(Y0)
-        #self.tempo.append(t_start)
-        #print(solver.t)
-        #while solver.t < t_final:               
-        #    solver.integrate(t_final,step=True)
-        #    self.tempo.append(solver.t)
-        #    self.sol.append(solver.y)
-            #print(solver.y[38])			
-        #warnings.resetwarnings()
-        #print("ufa");        
-        #t = np.array(self.tempo)
-        #z = np.array(self.sol)		
-        # ate aqui para o calculo com inte.ode
+        if(self.protocol==3 and self.w<40):
+            vetCritico = [];
+            a = 0;		
+            while a < self.tsim:
+                if ((a > self.t_ap) and a < self.t_ap + self.D) and (np.mod((a + (1000 - self.t_ap)),(self.w + self.Delay)))<= self.w:
+                    vetCritico.append(a);
+                a = a +1;
+            vetCritico = np.array(vetCritico);
+            solver = inte.odeint (self.calculos, ynit, tempo , tcrit=vetCritico, full_output=True)
+            z = np.array(solver[0]);
+            t = np.array(tempo);
+        else:
+            solver = inte.odeint (self.calculos, ynit, tempo , full_output=True)                   
+            z = np.array(solver[0]);
+            t = np.array(tempo);
 		
         Cac = z[:,35];
         Cass = z[:,36];
@@ -1936,6 +1919,6 @@ class cardiojunction:
      
 		
         #py.sign_in('cardiolab', 'K3sUD1esgJduklRiy0Lp') # Replace the username, and API key with your credentials.
-        return [t,I_app,v,I_Ca,I_Na,z[:,37],z[:,35],z[:,36],z[:,30],I_kr,I_ks,C0KsC1Ks,O1KsO2Ks,OKr,C1KrC2KrC3Kr,I_kp,I_ki,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,O1,O2,J_SRCarel,J_serca,J_SRleak,z[:,13],z[:,15],z[:,14],        canalSerca,I_ncx,I_nak,z[:,34],z[:,32],z[:,31],z[:,33],DifNa_sl_cl,I_cabk_junc,I_cabk_sl,I_cabk,I_pca_junc,I_pca_sl,I_pca,        Po,z[:,40],z[:,41],z[:,42],z[:,43],z[:,44],z[:,45],z4041,z4243,z4445,z[:,3],z[:,4],ONa,z484950,z515253,z5455,        z[:,0],z[:,1],z[:,2],I_tos,I_tof,Of,If,Os,Is,C0fC1fC2fC3f,CI0fCI1fCI2fCI3f,C0sC1sC2sC3s,CI0sCI1sCI2sCI3s,z[:,7],        z[:,8],z[:,9],z[:,10],FORCA,Lsim,Cacy,CelL,Fcontr,N0,N1,P0,P1,P2,P3,SL,IKur,IKss];
+        return [t,I_app,v,I_Ca,I_Na,z[:,37],z[:,35],z[:,36],z[:,30],I_kr,I_ks,C0KsC1Ks,O1KsO2Ks,OKr,C1KrC2KrC3Kr,I_kp,I_ki,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,O1,O2,J_SRCarel,J_serca,J_SRleak,z[:,13],z[:,15],z[:,14],canalSerca,I_ncx,I_nak,z[:,34],z[:,32],z[:,31],z[:,33],DifNa_sl_cl,I_cabk_junc,I_cabk_sl,I_cabk,I_pca_junc,I_pca_sl,I_pca,Po,z[:,40],z[:,41],z[:,42],z[:,43],z[:,44],z[:,45],z4041,z4243,z4445,z[:,3],z[:,4],ONa,z484950,z515253,z5455,        z[:,0],z[:,1],z[:,2],I_tos,I_tof,Of,If,Os,Is,C0fC1fC2fC3f,CI0fCI1fCI2fCI3f,C0sC1sC2sC3s,CI0sCI1sCI2sCI3s,z[:,7],        z[:,8],z[:,9],z[:,10],FORCA,Lsim,Cacy,CelL,Fcontr,N0,N1,P0,P1,P2,P3,SL,IKur,IKss];
         
 #################################################################################################################################################

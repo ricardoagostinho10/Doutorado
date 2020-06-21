@@ -1459,7 +1459,7 @@ class cardiojunction:
         tempo= np.zeros(iteracoes)		
         tempo = np.linspace(t_start,t_final,iteracoes)
 		
-        if(self.protocol==3 and self.w<40):
+        if(self.protocol==3 and self.w<50):
             vetCritico = [];
             a = 0;		
             while a < self.tsim:

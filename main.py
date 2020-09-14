@@ -98,18 +98,13 @@ def get_plot():
     z0,z1,z2,I_tos,I_tof,Of,If,Os,Is,C0fC1fC2fC3f,CI0fCI1fCI2fCI3f,C0sC1sC2sC3s,CI0sCI1sCI2sCI3s,z7,
     z8,z9,z10,FORCA,Lsim,Cacy,CelL,Fcontr,N0,N1,P0,P1,P2,P3,SL,IKur,IKss]=c.principal(protocol, Model_ICaL, Model_Na, Model_Ito, Model_IKr, Model_IKs, Model_Force,cellLength, Lsarc, BLOCKSRPUMP,STIMULUSRPUMP,BLOCKNCX,STIMULUSNCX,CAFEINA,BLOCKCICR,BLOCKIKs,BLOCKIKr,BLOCKItof,BLOCKItos,BLOCKINa,BLOCKICaL,STIMULUSICaL,t_ap,L,Ap,v_resting,tap,w,f,Delay,A_inj,tig);
 
-#    i=0;
-
-#    while i < v.size:
-#        if(v[i]>-72):
-#            print(v[i]);
-#            print(t[i]);
-#        i=i+1;
+    if Model_Force == 1:
+        FORCA = Fcontr;	
 		
     graphs = [
          dict(data=[dict(x=t,y=v,type='scatter')],layout=dict(title='Potencial de ação',yaxis=dict(title= 'm/V',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=z36,type='scatter'),],layout=dict(title='Ca<sup>2+</sup>CYT',yaxis=dict(title= '[Ca<sup>2+</sup>]cyt in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
-         dict(data=[dict(x=t,y=Fcontr,type='scatter',)],layout=dict(title='Força de Contração',yaxis=dict(title= 'Force in mN/mm<sup>2</sup>',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
+         dict(data=[dict(x=t,y=FORCA,type='scatter',)],layout=dict(title='Força de Contração',yaxis=dict(title= 'Force in mN/mm<sup>2</sup>',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),
          dict(data=[dict(x=t,y=SL,type='scatter',)],layout=dict(title='SL',yaxis=dict(title= 'Sarcomere length in um',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
          dict(data=[dict(x=t,y=z35,type='scatter')],layout=dict(title='Ca<sup>2+</sup>Cleft',yaxis=dict(title= '[Ca<sup>2+</sup>]cleft in mM',ticklen= 5,gridwidth= 2,),xaxis=dict(title= 'Time(ms)'))),			
          dict(data=[dict(x=t,y=z36,type='scatter'),],layout=dict(title='Ca<sup>2+</sup>SS',yaxis=dict(title= '[Ca<sup>2+</sup>]ss in mM',ticklen= 5,gridwidth= 2),xaxis=dict(title= 'Time(ms)'))),			
@@ -140,7 +135,6 @@ def get_plot():
     # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
     # objects to their JSON equivalents
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder);
-    	
     return render_template('resultados.html',
                            ids=ids,
                            graphJSON=graphJSON)		
@@ -163,13 +157,8 @@ def sobre():
     return render_template('sobre.html')
 	
 if __name__ == "__main__":
-#    try:
-#        import psyco
-#        print("opa");		
-#        psyco.full();
-#    except: print('Psyco optimizer not installed');
     
     #app.run(debug=True)
-    app.run(debug=True, host='0.0.0.0')
+    #app.run(debug=True, host='0.0.0.0')
     
-    #app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0')

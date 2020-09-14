@@ -1024,8 +1024,8 @@ class cardiojunction:
         J_SRleak = self.GSrLeak*(y[30]-y[37]);                                           #  [mM/ms]
         
         ## Forca de Contracao - Modelo de Negroni & Lascano - 2008
-
         if self.Model_Force == 0:
+            		
             hw = y[74];
             hp = y[75];
             TSCa = y[76];   #complexo TS + 3Ca
@@ -1076,8 +1076,10 @@ class cardiojunction:
             
             # Forca de contracao
             
-            self.Kp = 2700e3; #mN.mm**2.um**-1.mM**-1
-            self.Kw = 540e3; #mN.mm**2.um**-1.mM**-1
+            self.Kp = 270000e3; #ValorOriginalmN.mm**2.um**-1.mM**-1
+            self.Kw = 54000e3; #ValorOriginalmN.mm**2.um**-1.mM**-1
+            #self.Kp = 2700e3; #mN.mm**2.um**-1.mM**-1
+            #self.Kw = 540e3; #mN.mm**2.um**-1.mM**-1			
             self.Lo = 0.97; #um
             self.Ke = 105000; #mN.mm**-2.um**-5
             self.Le = 10; #mN.mm**-2.um**-1
@@ -1090,6 +1092,7 @@ class cardiojunction:
             self.alfaneg = 0.5;
             self.betaneg = 80;
             Ls = (1/self.betaneg)*np.log((FORCA/self.alfaneg)+1);
+            #print(Ls);			
             self.fit = Ls;
             #Lsim = Lsarc - (Ls - fit); #comprimento do sarcomero, sendo Lsarc o comprimento inicial
             #CelL = cellLength *(Lsim/Lsarc);
